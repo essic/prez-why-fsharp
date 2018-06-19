@@ -180,13 +180,14 @@ And a lot more to explore ...
 
 +++
 ### And more !
-- VsCode IDE with [Ionide](http://ionide.io/)
-- Readability (from top to bottom, left to right)
+- F# runs very well on the CLR 
+- Interactivity with REPL & Scripting, checkout [FAKE](https://fake.build/) DSL for build task.
+- IDE choice VScode or Atom with [Ionide](http://ionide.io/), Visual Studio
+- Readability (from top to bottom, left to right) & consize code
 - Pattern matching
 - No value by default, so no null by default as well !
 - Strong inference !
-- Concise code !
-- REPL, Scripts, active patterns , async computation, Type Providers, computation expression ...
+- Active patterns , Async computation, Computation expression, Type Providers ...
   
 ---
 
