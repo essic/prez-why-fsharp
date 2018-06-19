@@ -195,7 +195,7 @@ And a lot more to explore ...
 
 ### Production ready ?
 
-- Jet.com
+- [Jet.com](http://fsharpshow.com/3-jet-revolutionizing-ecommerce-using-fsharp)
 - [Testimonials](https://fsharp.org/testimonials/) 
 
 ---
