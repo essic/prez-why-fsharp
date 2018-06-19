@@ -180,14 +180,14 @@ And a lot more to explore ...
 
 +++
 ### And more !
-- F# runs very well on the CLR 
 - Interactivity with REPL & Scripting, checkout [FAKE](https://fake.build/) DSL for build task.
 - IDE choice VScode or Atom with [Ionide](http://ionide.io/), Visual Studio
 - Readability (from top to bottom, left to right) & consize code
-- Pattern matching
+
++++
 - No value by default, so no null by default as well !
 - Strong inference !
-- Active patterns , Async computation, Computation expression, Type Providers ...
+- Pattern matching, Active patterns , Async computation, Computation expression, Type Providers ...
   
 ---
 
