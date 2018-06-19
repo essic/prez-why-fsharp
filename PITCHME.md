@@ -179,12 +179,14 @@ And a lot more to explore ...
 - [Railway Oriented Programing](https://fsharpforfunandprofit.com/rop/)
 
 +++
-### And more !
+
+### Just a little bit ...
 - Interactivity with REPL & Scripting, checkout [FAKE](https://fake.build/) DSL for build task.
 - IDE choice VScode or Atom with [Ionide](http://ionide.io/), Visual Studio
 - Readability (from top to bottom, left to right) & consize code
 
 +++
+### more !
 - No value by default, so no null by default as well !
 - Strong inference !
 - Pattern matching, Active patterns , Async computation, Computation expression, Type Providers ...
