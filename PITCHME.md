@@ -121,8 +121,7 @@ Showing information about collaborators <br> @fa[arrow-down]
 @[112-117](The magic is here !)
 
 +++
-[REPL here](https://repl.it/@essic/SimpleFSharpDemo-03)
-@fa[arrow-down]
+[REPL here](https://repl.it/@essic/SimpleFSharpDemo-03) <br> @fa[arrow-down]
 
 +++
 ### There are better ways ! 
