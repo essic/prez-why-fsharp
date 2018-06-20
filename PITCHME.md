@@ -72,13 +72,14 @@ Showing information about collaborators <br> @fa[arrow-down]
 @[53,55](Now we handle consultant)
 @[55-57](Let's match on empty list of skills first for consultant)
 @[55,56,58-66](For any other case ...)
-@[59,62](Map this !)
+@[59-62](Map this !)
 @[65](Reduce that !)
-@[67-73](Pretty print collaborator information with function composition)
+@[67-74](Pretty print collaborator information with function composition)
+@[71-72](Yes, right here)
 @[74-87](Main function !)
 
 +++
-[REPL here](https://repl.it/@essic/SimpleFSharpDemo-01)
+[REPL here](https://repl.it/@essic/whyFsharpDemo1-public)
 
 ---
 
