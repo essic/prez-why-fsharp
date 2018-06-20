@@ -99,6 +99,11 @@ Showing information about collaborators <br> @fa[arrow-down]
 ---
 
 ### Naive error handling in F# !
+
+We wish to forbids the creation of a person with
+
+- invalid name or first name, let's say invalid is null or empty here
+- invalid age, we're cool so, we'll just forbids negative number
 @fa[arrow-down]
 
 +++?code=src/implem03.fs&lang=fsharp
@@ -121,7 +126,7 @@ Showing information about collaborators <br> @fa[arrow-down]
 @[112-117](The magic is here !)
 
 +++
-[REPL here](https://repl.it/@essic/SimpleFSharpDemo-03) <br> @fa[arrow-down]
+[REPL here](https://repl.it/@essic/whyFsharpDemo3-public) <br> @fa[arrow-down]
 
 +++
 ### There are better ways ! 
@@ -172,8 +177,10 @@ And a lot more to explore ...
 @fa[arrow-down]
 
 +++?code=src/implem04.fs&lang=fsharp
-@[70-86]
-@[72-77](Currying !)
+@[101-125]
+@[103-104](An alternative definition to create a consultant)
+@[107](Currying !)
+@[109-117](We now use it)
 
 +++
 [REPL here](https://repl.it/@essic/SimpleFSharpDemo-04)
