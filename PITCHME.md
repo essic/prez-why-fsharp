@@ -10,7 +10,7 @@
 
 - Strong, static language from Microsoft with deep inference |
 - 1.0 appeared on 2005 ( older than GO ...) |
-- Multi-paradigm language : functional, imperative and objected oriented |
+- Multi-paradigm language : functional, imperative and object-oriented |
 - Open Source & Cross Platform |
 - Heavily influenced by ML, OCaml, Haskell, C# & others |
 - Fully supported by .NET, Mono & Javascript ! |
@@ -21,10 +21,10 @@
 - Functional vs Object is a myth |
 - Object Oriented paradigm focus on structure |
 - Functional paradigm focus on data |
-- Functional paradigm is around for a long time |
-- … and it’s been spreading for a while C#, Java, Kotlin, Rust … |
-- You do not need math, to go into production |
-- … but there is a direct relation, it is interesting and useful ! (Monoid, Functor, Monad ...) |
+- Functional paradigm is old |
+- … and it’s been spreading for a while now : C#, Java, Kotlin, Rust … |
+- You do not need math, to go to production |
+- … but there is a relation, it's interesting and useful ! (Monoid, Functor, Monad ...) |
 
 ---
 ### Demo !
@@ -165,7 +165,7 @@ And a lot more to explore ...
 ### Functional first 
 - Focus on data 
 - Function composition 
-- Currying and partial application offered
+- Currying and partial application for free
 - Map, Filter, Reduce at the heart of the language 
 
 +++
