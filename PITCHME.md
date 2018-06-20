@@ -87,15 +87,14 @@ Showing information about collaborators <br> @fa[arrow-down]
 @fa[arrow-down]
 
 +++?code=src/implem02.fs&lang=fsharp
-@[30-31](We remove types, F# is smart enough to figure out things)
-@[33-34]
-@[35-40]
-@[41-51]
-@[53-57]
-@[59-68]
+@[34-43](We remove types, F# is smart enough to figure out things)
+@[46-50]
+@[52-67]
+@[69-74]
+@[77-87]
 
 +++
-[REPL here](https://repl.it/@essic/SimpleFSharpDemo-02)
+[REPL here](https://repl.it/@essic/whyFsharpDemo2-public)
 
 ---
 
