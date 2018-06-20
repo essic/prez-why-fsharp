@@ -8,7 +8,7 @@
 
 ### What is F# ?
 
-- Strong, static language from Microsoft with deep inference |
+- Strong, static language from Microsoft with deep inference | It compiles ... | or you can script with it |
 - 1.0 appeared on 2005 ( older than GO ...) |
 - Multi-paradigm language : functional, imperative and object-oriented |
 - Open Source & Cross Platform |
