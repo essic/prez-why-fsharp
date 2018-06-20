@@ -87,7 +87,7 @@ Showing information about collaborators <br> @fa[arrow-down]
 @fa[arrow-down]
 
 +++?code=src/implem02.fs&lang=fsharp
-@[34-43](We remove types, F# is smart enough to figure out things)
+@[34-37,40-43](We remove types, F# is smart enough to figure out things)
 @[46-50]
 @[52-67]
 @[69-74]
