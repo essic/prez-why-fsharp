@@ -15,7 +15,7 @@
 - Multi-paradigm language : functional, imperative and object-oriented |
 - It compiles to executable or you can script with it |
 - Heavily influenced by ML, OCaml, Haskell, C# & others |
-- Fully supported by .NET, Mono & Javascript ! |
+- Fully supported by .NET& Mono. Compiles to Javascript. |
 
 ---
 ### About functional paradigm
@@ -26,7 +26,7 @@
 - Functional paradigm is old |
 - … and it’s been spreading for a while now : C#, Java, Kotlin, Rust … |
 - You do not need math, to go to production |
-- … but there is a relation, it's interesting and useful ! (Monoid, Functor, Monad ...) |
+- … but there is a relation, it's interesting and useful ! (Monoid, Functor, Applicative, Monad ...) |
 
 ---
 ### Demo !
@@ -68,7 +68,7 @@ Showing information about collaborators <br> @fa[arrow-down]
 @[46-50](Pretty print age, first name and last name to the console. Also meet 'Pattern Matching' !)
 @[47](This is it !)
 @[48](Match this pattern, do this !)
-@[49](Macth that pattern, do that !)
+@[49](Match that pattern, do that !)
 @[52-67](Pretty print what a collaborator does. Hello again Pattern matching ! Also welcome to map & reduce !)
 @[53-54](We handle Manager first)
 @[53,55](Now we handle consultant)
