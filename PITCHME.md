@@ -237,22 +237,22 @@ And a lot more to explore ...
 ---
 
 ### Libraries 
-- [Paket](https://fsprojects.github.io/Paket/) -> Dependency manager for .NET and mono projects |
-- [Fake](https://fake.build/) -> A DSL for build task |
-- [Suave](https://suave.io/) -> Web development library |
-- [Fsharp.Data](http://fsharp.github.io/FSharp.Data/) -> Library for Data Access (Type Providers !!) |
-- [Hedgehog](https://github.com/hedgehogqa/fsharp-hedgehog) -> Property based testing in F#  |
-- also any C# package that you can find ... |
+- [Paket](https://fsprojects.github.io/Paket/) is a dependency manager for .NET and mono projects |
+- [Fake](https://fake.build/) is a DSL for build task |
+- [Suave](https://suave.io/) is a Web development library |
+- [Fsharp.Data](http://fsharp.github.io/FSharp.Data/) is a library for Data Access (Type Providers !!) |
+- [Hedgehog](https://github.com/hedgehogqa/fsharp-hedgehog) is a Property Based testing in F#  |
+- also any C# package that you can find, checkout NugGet ... |
 - and more ! |
 
 ---
 
 ### More 
 
-- https://fsharpforfunandprofit.com -> great content about learning F#
-- https://fsharp.org -> Foundation website
-- http://fable.io/ -> F# to JavaScript compiler (write F#, transpiles Javascript)
-- https://fsharp.org/guides/slack/ -> Slack information
+- https://fsharpforfunandprofit.com : great content about learning F#
+- https://fsharp.org : Foundation website
+- http://fable.io/ : F# to JavaScript compiler (write F#, transpiles Javascript)
+- https://fsharp.org/guides/slack/ : Slack
 - Many more resources ... great community so don't hesitate to ask !
 
 ---
