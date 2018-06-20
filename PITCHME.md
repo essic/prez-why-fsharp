@@ -275,4 +275,4 @@ also any C# package that you can find, checkout NugGet, there's a lot
 
 ### Thank you !
 
-Don't hesitate to comment on [github](https://github.com/essic/prez-why-fsharp) or [tweet](https://twitter.com/essiccf37) me for any mitstake or observation, you might have.
+Don't hesitate to drop by on [github](https://github.com/essic/prez-why-fsharp) or [tweet](https://twitter.com/essiccf37) me for any mitstakes or observations, you might have.
