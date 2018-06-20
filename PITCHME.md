@@ -189,7 +189,7 @@ And a lot more to explore ...
 @[109-117](We now use it)
 
 +++
-[REPL here](https://repl.it/@essic/SimpleFSharpDemo-04)
+[REPL here](https://repl.it/@essic/whyFsharpDemo4-public)
 
 ---
 ### So ... why F# ?
