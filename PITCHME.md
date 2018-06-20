@@ -10,12 +10,12 @@
 
 ### What is F# ?
 
-- Strong, static, open sourced and cross platform language from Microsoft with deep inference |
+- Strongly, statically typed, open sourced and cross platform language from Microsoft with deep inference |
 - 1.0 appeared on 2005 ( older than GO ...) |
 - Multi-paradigm language : functional, imperative and object-oriented |
 - It compiles to executable or you can script with it |
 - Heavily influenced by ML, OCaml, Haskell, C# & others |
-- Fully supported by .NET& Mono. Compiles to Javascript. |
+- Fully supported by .NET & Mono. Compiles to Javascript. |
 
 ---
 ### About functional paradigm
