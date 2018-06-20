@@ -1,5 +1,7 @@
 # Why F# ?
 
+[@essiccf37](https://twitter.com/essiccf37)
+
 ---
 
 > "Point of view is worth 80 IQ points" <br> Alan Kay
@@ -99,12 +101,16 @@ Showing information about collaborators <br> @fa[arrow-down]
 ---
 
 ### Naive error handling in F# !
-
-We wish to forbids the creation of a person with
-
-- invalid name or first name, let's say invalid is null or empty here
-- invalid age, we're cool so, we'll just forbids negative number
 @fa[arrow-down]
+
++++
+We wish to forbids the creation of a person with an invalid name and / or first name
+
++++
+Let's say an invalid name / first name is null or empty here
+
++++
+For an invalid age, since we're cool individuals, we'll just forbids negative number
 
 +++?code=src/implem03.fs&lang=fsharp
 @[34-37](We create a function which check if I got any nullable string is my list !)
@@ -203,15 +209,17 @@ And a lot more to explore ...
 
 +++
 ### Error handling
-- Consistant typings and constructions => make invalid state non representable with ease
+- Consistant typings and constructions => make invalid state non representable with ease, reduces opportunity for failure
+- Result & Option are pure gold
 - [Railway Oriented Programing](https://fsharpforfunandprofit.com/rop/)
 
 +++
 
 ### Just a little bit ...
 - Interactivity with REPL & Scripting, checkout [FAKE](https://fake.build/) DSL for build task.
-- IDE choice VScode or Atom with [Ionide](http://ionide.io/), Visual Studio
-- Readability (from top to bottom, left to right) & consize code
+- IDE choices expanded, VScode or Atom with [Ionide](http://ionide.io/) or still Visual Studio
+- Readability (from top to bottom, left to right) 
+- Consize code, less boiler plate
 
 +++
 ### more !
@@ -229,21 +237,22 @@ And a lot more to explore ...
 ---
 
 ### Libraries 
-- Paket |
-- Fake |
-- Suave |
-- Unquote |
-- Hedgehog |
+- [Paket](https://fsprojects.github.io/Paket/) -> Dependency manager for .NET and mono projects 
+- [Fake](https://fake.build/) -> A DSL for build task |
+- [Suave](https://suave.io/) -> Web development library |
+- [Fsharp.Data](http://fsharp.github.io/FSharp.Data/) -> Library for Data Access (Type Providers !!) |
+- [Hedgehog](https://github.com/hedgehogqa/fsharp-hedgehog) -> Property based testing in F#  |
+- also any C# package that you can find ...
 - and more ! |
 
 ---
 
 ### More 
 
-- https://fsharpforfunandprofit.com 
-- https://fsharp.org/ 
-- http://fable.io/ F# to JavaScript compiler 
-- http://fsharp.github.io/FSharp.Data 
+- https://fsharpforfunandprofit.com -> great content about learning F#
+- https://fsharp.org -> Foundation website
+- http://fable.io/ -> F# to JavaScript compiler (write F#, transpiles Javascript)
+- https://fsharp.org/guides/slack/ -> Slack information
 - Many more resources ... great community so don't hesitate to ask !
 
 ---
@@ -253,3 +262,5 @@ And a lot more to explore ...
 ---
 
 ### Thank you !
+
+Don't hesitate to comment on [github](https://github.com/essic/prez-why-fsharp) or [tweet](https://twitter.com/essiccf37) me for any mitstake or observation, you might have.
