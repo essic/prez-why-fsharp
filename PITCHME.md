@@ -102,16 +102,27 @@ Showing information about collaborators <br> @fa[arrow-down]
 @fa[arrow-down]
 
 +++?code=src/implem03.fs&lang=fsharp
-@[29-32](We use reduce again to check if in our list of string, we got on or more null ...)
-@[34-39](We create a person constructor, with the 'T option' type !)
-@[41-50](We use the new Person contructor with map, to create 'Collaborator option'.)
-@[52-67](We change nothing here)
-@[69-73](Same here)
-@[83-85](Let's add some bad entries !)
-@[88-92](The magic is here !)
+@[34-37](We create a function which check if I got any nullable string is my list !)
+@[37](We use a Folding to do that ! Reduce is in fact a kind of Fold :p)
+@[39-49](We create a function to create a person or fail if any entry is invalid, let's use the 'T option' type ...)
+@[39-41](This is our guy ! A sum type, yes.)
+@[45-46](If we got an invalid entry we return 'None' which is a valid value of the 'Person option' type !)
+@[45,48-49](If all is right, we return 'Some person' which is also a valid value of the type 'Person option' type !)
+@[52-59](Let's use it to create a manager or fail if entries are invalid)
+@[54]
+@[56-57](Since we are not sure of the 'person', we use Option.map)
+@[56-58](Same here)
+@[59](So we return a value of the 'Collaborator option' type)
+@[62-67](Same here)
+@[70-74](We change nothing here)
+@[76-98](Here as well ...)
+@[100-118](Our main did change a little...)
+@[108-110](Let's add some bad entries !)
+@[112-117](The magic is here !)
 
 +++
 [REPL here](https://repl.it/@essic/SimpleFSharpDemo-03)
+@fa[arrow-down]
 
 +++
 ### There are better ways ! 
