@@ -51,14 +51,14 @@ module Implem01
 
   let whatDoYouDo (collaborator:Collaborator) : Collaborator =
     match collaborator with
-    | Manager (_,businessUnit) -> printfn "I handle business on %s" <| sprintf "%A" businessUnit 
+    | Manager (_,businessUnit) -> printfn "I handle business on %s" ( sprintf "%A" businessUnit )
     | Consultant (_,skills) ->
         match skills with
         | [] -> printfn "I have no skills yet !" // I handle the case where skills is an empty list !
         | _ -> // For any other case !
-          let convertSkillsToStrings (param:Skill list) : string list =
+          let convertSkillsToStrings (skills':Skill list) : string list =
             //List.map : (T -> U) -> T list -> U list
-            let result = List.map (fun skill -> sprintf "%A" skill) skills
+            let result = List.map (fun skill -> sprintf "%A" skill) skills'
             result
           
           //List.reduce : (T -> T -> T) -> T list -> T
