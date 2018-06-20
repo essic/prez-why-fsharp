@@ -78,7 +78,7 @@ Showing information about collaborators <br> @fa[arrow-down]
 @[65](Reduce that !)
 @[69-74](Pretty print collaborator information with function composition)
 @[71-72](Yes, right here)
-@[74-87](Main function !)
+@[75-87](Main function !)
 
 +++
 [REPL here](https://repl.it/@essic/whyFsharpDemo1-public)
@@ -237,12 +237,12 @@ And a lot more to explore ...
 ---
 
 ### Libraries 
-- [Paket](https://fsprojects.github.io/Paket/) -> Dependency manager for .NET and mono projects 
+- [Paket](https://fsprojects.github.io/Paket/) -> Dependency manager for .NET and mono projects |
 - [Fake](https://fake.build/) -> A DSL for build task |
 - [Suave](https://suave.io/) -> Web development library |
 - [Fsharp.Data](http://fsharp.github.io/FSharp.Data/) -> Library for Data Access (Type Providers !!) |
 - [Hedgehog](https://github.com/hedgehogqa/fsharp-hedgehog) -> Property based testing in F#  |
-- also any C# package that you can find ...
+- also any C# package that you can find ... |
 - and more ! |
 
 ---
