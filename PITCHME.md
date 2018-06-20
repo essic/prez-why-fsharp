@@ -14,7 +14,9 @@
 - 1.0 appeared on 2005 ( older than GO ...) |
 - Multi-paradigm language : functional, imperative and object-oriented |
 
-+++
+---
+### What is F# ?
+
 - It compiles to executable or you can script with it |
 - Heavily influenced by ML, OCaml, Haskell, C# & others |
 - Fully supported by .NET & Mono. Compiles to Javascript. |
