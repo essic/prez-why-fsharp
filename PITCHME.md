@@ -1,6 +1,6 @@
 # Why F# ?
 
-[@essiccf37](https://twitter.com/essiccf37)
+[@essiccf37](https://twitter.com/essiccf37) <br> June 2018
 
 ---
 
@@ -239,13 +239,23 @@ And a lot more to explore ...
 ### Libraries ?
 @fa[arrow-down]
 
-+++[Paket](https://fsprojects.github.io/Paket/) is a dependency manager for .NET and mono projects 
-+++[Fake](https://fake.build/) is a DSL for build task 
-+++[Suave](https://suave.io/) is a Web development library 
-+++[Fsharp.Data](http://fsharp.github.io/FSharp.Data/) is a library for Data Access (Type Providers !!) 
-+++[Hedgehog](https://github.com/hedgehogqa/fsharp-hedgehog) is a Property Based testing in F#  
-+++also any C# package that you can find, checkout NugGet ... 
-+++and more ! 
++++
+[Paket](https://fsprojects.github.io/Paket/) is a dependency manager for .NET and mono projects 
+
++++
+[Fake](https://fake.build/) is a DSL for build task 
+
++++
+[Suave](https://suave.io/) is a Web development library 
+
++++
+[Fsharp.Data](http://fsharp.github.io/FSharp.Data/) is a library for Data Access (Type Providers !!) 
+
++++
+[Hedgehog](https://github.com/hedgehogqa/fsharp-hedgehog) is a Property Based testing in F#  
+
++++
+also any C# package that you can find, checkout NugGet, there's a lot
 
 ---
 
