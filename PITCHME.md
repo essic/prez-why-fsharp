@@ -253,7 +253,7 @@ And a lot more to explore ...
 [Suave](https://suave.io/) is a Web development library 
 
 +++
-[Fsharp.Data](http://fsharp.github.io/FSharp.Data/) is a library for Data Access (Type Providers !!) 
+[Fsharp.Data](http://fsharp.github.io/FSharp.Data/) is a library for Data Access <br> (Type Providers !!) 
 
 +++
 [Hedgehog](https://github.com/hedgehogqa/fsharp-hedgehog) is a Property Based testing in F#  
