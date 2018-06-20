@@ -74,7 +74,7 @@ Showing information about collaborators <br> @fa[arrow-down]
 @[55,56,58-66](For any other case ...)
 @[59-62](Map this !)
 @[65](Reduce that !)
-@[67-74](Pretty print collaborator information with function composition)
+@[69-74](Pretty print collaborator information with function composition)
 @[71-72](Yes, right here)
 @[74-87](Main function !)
 
