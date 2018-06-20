@@ -236,14 +236,16 @@ And a lot more to explore ...
 
 ---
 
-### Libraries 
-- [Paket](https://fsprojects.github.io/Paket/) is a dependency manager for .NET and mono projects |
-- [Fake](https://fake.build/) is a DSL for build task |
-- [Suave](https://suave.io/) is a Web development library |
-- [Fsharp.Data](http://fsharp.github.io/FSharp.Data/) is a library for Data Access (Type Providers !!) |
-- [Hedgehog](https://github.com/hedgehogqa/fsharp-hedgehog) is a Property Based testing in F#  |
-- also any C# package that you can find, checkout NugGet ... |
-- and more ! |
+### Libraries ?
+@fa[arrow-down]
+
++++[Paket](https://fsprojects.github.io/Paket/) is a dependency manager for .NET and mono projects 
++++[Fake](https://fake.build/) is a DSL for build task 
++++[Suave](https://suave.io/) is a Web development library 
++++[Fsharp.Data](http://fsharp.github.io/FSharp.Data/) is a library for Data Access (Type Providers !!) 
++++[Hedgehog](https://github.com/hedgehogqa/fsharp-hedgehog) is a Property Based testing in F#  
++++also any C# package that you can find, checkout NugGet ... 
++++and more ! 
 
 ---
 
