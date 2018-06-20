@@ -1,17 +1,15 @@
 module Implem02
 
   open System
-  
-  type Age = int
-  type FirstName = string
-  type LastName = string
-  
+   
+  //This is a product type : Record
   type Person = 
-    { FirstName : FirstName 
-      LastName : LastName 
-      Age : Age }
+    { FirstName : string 
+      LastName : string 
+      Age : int }
   
-  type ConsultantSkills =
+  //These are sum types
+  type Skill =
     | CSharp
     | FSharp
     | Java
@@ -23,46 +21,67 @@ module Implem02
     | Natixis
     | BNP
   
+  //This is also a sum type with product types on the inside :p
   type Collaborator =
-    | Consultant of Person * (ConsultantSkills list) 
+    // 'Consultant' is a data contructor for 'Collaborator' type
+    // This data constructor takes as parameter a 'Person' record and a list of 'Skills'
+    | Consultant of Person * (Skill list) 
+    // 'Manager' is another data constructor for 'Collaborator' type
+    // This data constructor takes a 'Person' record as well and a 'ManagerBU' value
     | Manager of Person * ManagerBU 
 
-  let createConsultant firstName lastName age skills =
-    ({ FirstName = firstName ; LastName = lastName ; Age = age } , skills) |> Consultant
-    
+  // function returns a Collaborator which is a Manager
   let createManager firstName lastName age bu =
-    Manager ({ FirstName = firstName ; LastName = lastName ; Age = age } , bu)
+    let person = { FirstName = firstName ; LastName = lastName ; Age = age }
+    let personAndBusinessUnit = (person, bu)
+    Manager personAndBusinessUnit
 
-  let whoAreYou collaborator =
+  // function returns a Collaborator which is a Consultant
+  let createConsultant firstName lastName age skills =
+    let person = { FirstName = firstName ; LastName = lastName ; Age = age }
+    let personAndSkills = (person,skills)
+    Consultant personAndSkills
+
+  // function to pretty print 'age', 'firtname' and 'lastname' of a Collaborator 
+  let whoAreYou collaborator:Collaborator  =
     match collaborator with
     | Consultant (p,_) -> printfn "I am a %i years old, consultant. My name is %s %s" p.Age p.FirstName p.LastName
     | Manager (p,_) -> printfn "I am a %i years old, manager. My name is %s %s" p.Age p.FirstName p.LastName
     collaborator
 
-  let whatDoYouDo collaborator =
+  let whatDoYouDo collaborator:Collaborator =
     match collaborator with
-    | Manager (_,businessUnit) -> printfn "I handle business on %s" <| sprintf "%A" businessUnit 
+    | Manager (_,businessUnit) -> printfn "I handle business on %s" (sprintf "%A" businessUnit)
     | Consultant (_,skills) ->
         match skills with
-        | [] -> printfn "I have no skills yet !" 
-        | _ ->
-          let skillsString = List.reduce (fun acc elem -> acc + ", " + elem) ( skills |> List.map (sprintf "%A") )
+        | [] -> printfn "I have no skills yet !" // I handle the case where skills is an empty list !
+        | _ -> // For any other case !
+          let convertSkillsToStrings skills' : string list =
+            //List.map : (T -> U) -> T list -> U list
+            let result = List.map (fun skill -> sprintf "%A" skill) skills'
+            result
+          
+          //List.reduce : (T -> T -> T) -> T list -> T
+          let skillsString = List.reduce (fun acc elem -> acc + ", " + elem) (convertSkillsToStrings skills)
           printfn "I work on %s" skillsString
     collaborator
 
   let customPrint collaborator =
     printfn "***********************"
-    collaborator
-    |> (whoAreYou >> whatDoYouDo) |> ignore
+    //(>>) : ( a -> b ) -> (b -> c) -> a -> c
+    (whoAreYou >> whatDoYouDo) collaborator
+    |> ignore
     printfn "***********************"
 
   [<EntryPoint>]
   let main _ =
+    // We create some collaborators
     let collaborators = 
       [ createConsultant "Aly-Bocar" "Cisse" 32 [CSharp;FSharp]
         createManager "Luffy" "Dragon" 20 SGCIB 
         createConsultant "Nobody" "Ulysse" 15 [] ] 
     
-    collaborators 
-    |> List.iter customPrint 
+    //Let's iterate on every Collaborator and print !
+    // List.iter : ('T -> Unit) -> 'T list -> unit
+    List.iter customPrint collaborators 
     0
