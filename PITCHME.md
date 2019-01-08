@@ -108,13 +108,13 @@ Showing information about collaborators <br> @fa[arrow-down]
 @fa[arrow-down]
 
 +++
-We wish to forbids the creation of a person with an invalid name and / or first name
+We wish to forbid the creation of a person with an invalid name and / or first name
 
 +++
 Let's say an invalid name / first name is null or empty here
 
 +++
-For an invalid age, since we're cool individuals, we'll just forbids negative number
+For an invalid age, since we're cool individuals, we'll just forbid negative number
 
 +++?code=src/implem03.fs&lang=fsharp
 @[34-37](We create a function which check if I got any nullable string is my list !)
