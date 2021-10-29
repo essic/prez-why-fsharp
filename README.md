@@ -1,10 +1,9 @@
 # Why F# ?
 
-You can see the presentation [here](https://gitpitch.com/essic/prez-why-fsharp/master). 
+Short presentation on F# benefits follow by a hands on.
+Target audiance should be, mid-level to senior developers.
 
-Short presentation on F# benefits. Target audiance should be, mid-level to senior developers who wishes to know, "what's" the hype is about and wish to discuss about things.
+The aim is not to convert people but to give an overview of what F# has to offer and/or have some practice with it in "real world" like setting.
 
-This talk should last 20 to 35 minutes.
-The target audiance expected is intermediate to senior developper who heard about Functional Programing and / or F#.
-
-In this talk we try to give a short introduction and give a feel for the language.
+This talk should last 20 to 35 minutes max.
+The hands on should be at least 45 minutes and more if people are interested.
