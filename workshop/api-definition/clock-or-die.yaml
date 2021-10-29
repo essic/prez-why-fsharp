@@ -1,0 +1,288 @@
+openapi: 3.0.0
+info:
+  version: "0.0.1"
+  title: "clock-or-die-api"
+servers:
+  - url: "localhost:3000"
+paths:
+  /activity-tracking/save:
+    post:
+      summary: "Save activities tracking, for later validation."
+      operationId: saveActivitiesTracking
+      tags:
+        - timesheets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/TimeSheetCell'
+            example:
+              [
+                { date: '31/01/2022', activities: [ {activityId: 1, activityLabel: 'SNCF', timeTracked: 0.5}]},
+                { date: '01/02/2022', activities: [ {activityId: 1, activityLabel: 'SNCF', timeTracked: 1}]},
+                { date: '02/02/2022', activities: [] },
+                { date: '06/02/2022',
+                  activities: [ { activityId: 1, activityLabel: 'SNCF', timeTracked: 0.25 },
+                                { activityId: 2, activityLabel: 'Leetchi', timeTracked: 0.75 } ]
+                }                                    
+              ]
+      responses:
+        '200':
+          description: Saved
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Errors"
+  /timessheets/week/current:
+    get:
+      summary: "Ask for the timesheet for the current week"
+      operationId: getTrackingForCurrentWeek
+      tags:
+      - timesheets
+      responses:
+        "200":
+          description: "Weekly time sheets with activities status"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TimeSheet"
+              example:
+                weekNumber: 5,
+                weekYear: 2022,
+                hasBeenValidated: false,
+                timeCells: [
+                  { date: '31/01/2022', validated: false, activities: [ {activityId: 1, activityLabel: 'SNCF', timeTracked: 1}]},
+                  { date: '01/02/2022', validated: true, activities: [ {activityId: 1, activityLabel: 'SNCF', timeTracked: 1}]},
+                  { date: '02/02/2022', validated: true, activities: [] },
+                  { date: '03/02/2022', validated: true, activities: [ {activityId: 1, activityLabel: 'SNCF', timeTracked: 1}]},
+                  { date: '04/02/2022', validated: false ,activities: [ {activityId: 1, activityLabel: 'SNCF', timeTracked: 1}]},                                    
+                  { date: '05/02/2022', validated: false, activities: [ {activityId: 1, activityLabel: 'SNCF', timeTracked: 1}]},                                   
+                  { date: '06/02/2022', validated: false, 
+                      activities: [ { activityId: 1, activityLabel: 'SNCF', timeTracked: 0.25 },
+                                    { activityId: 2, activityLabel: 'Leetchi', timeTracked: 0.75 }
+                                  ] }                                    
+                  ]
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Errors"
+  /timessheets/week/{week_number}/{week_year}:
+    get:
+      summary: "Ask for the weekly timesheet for the given date."
+      operationId: getTrackingForWeek
+      parameters:
+        - in: path
+          name: week_number
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 52
+            description: The week wished for
+          example: 5
+        - in: path
+          required: true
+          name: week_year
+          schema:
+            type: integer
+            minimum: 1900
+            maximum: 3000
+            description: The year of the week wished for
+          example: 2022
+      tags:
+        - timessheets
+      responses:
+        "200":
+          description: "Weekly time sheets with activities status"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TimeSheet"
+              example:
+                weekNumber: 5,
+                weekYear: 2022,
+                hasBeenValidated: false,
+                timeCells: [
+                  { date: '31/01/2022', validated: false, activities: [ {activityId: 1, activityLabel: 'SNCF', timeTracked: 1}]},
+                  { date: '01/02/2022', validated: true, activities: [ {activityId: 1, activityLabel: 'SNCF', timeTracked: 1}]},
+                  { date: '02/02/2022', validated: true, activities: [] },
+                  { date: '03/02/2022', validated: true, activities: [ {activityId: 1, activityLabel: 'SNCF', timeTracked: 1}]},
+                  { date: '04/02/2022', validated: false ,activities: [ {activityId: 1, activityLabel: 'SNCF', timeTracked: 1}]},                                    
+                  { date: '05/02/2022', validated: false, activities: [ {activityId: 1, activityLabel: 'SNCF', timeTracked: 1}]},                                   
+                  { date: '06/02/2022', validated: false, 
+                      activities: [ { activityId: 1, activityLabel: 'SNCF', timeTracked: 0.25 },
+                                    { activityId: 2, activityLabel: 'Leetchi', timeTracked: 0.75 }
+                                  ] }                                    
+                  ]
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Errors"
+  /timesheets/activities:
+    get:
+      summary: "Get activities for connected used."
+      operationId: getActivitiesForUser
+      tags:
+        - tracking
+      responses:
+        '200':
+          description: "List of activities for the user"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Errors"
+  /admin/activities/{activity_name}:
+    post:
+      summary: "Add or update activities."
+      operationId: createActivity
+      parameters:
+        - in: path
+          required: true
+          name: activity_name
+          schema:
+            type: string
+            description: The name of the activity to create/update
+          example: Project Inferno - From Hell        
+      tags:
+        - admin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivityDescription'
+            example:
+              description: "A project of peace and unicorns"
+              tags: ['#love', '#peace', '#TechnologiesOfHea']
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+              example:
+                activityId: 23
+                activityLabel: Project Inferno - From Hell
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Errors"
+components:
+  schemas:
+    ActivityDescription:
+      type: object
+      additionalProperties: false
+      required:
+        - description
+      properties:
+        description:
+          type: string
+        tags:
+          type: array
+          items: 
+            type: string
+    Activity:
+      type: object
+      additionalProperties: false
+      required:
+        - activityLabel
+        - activityId
+      properties:
+        activityLabel: 
+          type: string
+        activityId:
+          type: integer
+          minimum: 1
+          format: int64
+    ActivityTracking:
+      type: object
+      additionalProperties: false
+      required:
+        - activityId
+        - timeTracked
+        - activityLabel
+      properties:
+        activityLabel: 
+          type: string
+        activityId:
+          type: integer
+        timeTracked:
+          type: number
+          multipleOf: 0.25
+          minimum: 0.25
+          maximum: 1
+    TimeSheetCell:
+      type: object
+      additionalProperties: false
+      required:
+        - date
+        - activities
+      properties:
+        date:
+          type: string
+        validated:
+          type: boolean
+        activities:
+          type: array
+          items:
+            $ref: "#/components/schemas/ActivityTracking"
+    TimeSheet:
+      type: object
+      additionalProperties: false
+      required:
+        - weekNumber
+        - weekYear
+        - timeCells
+      properties:
+        weekNumber:
+          type: integer
+          minimum: 1
+          maximum: 52
+        weekYear:
+          type: integer
+          format: int32
+        timeCells:
+          type: array
+          items:
+            $ref: "#/components/schemas/TimeSheetCell"
+    Error:
+      type: object
+      additionalProperties: false
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    Errors:
+      type: array
+      items:
+        $ref: "#/components/schemas/Error"
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+security:
+  - BasicAuth: []
