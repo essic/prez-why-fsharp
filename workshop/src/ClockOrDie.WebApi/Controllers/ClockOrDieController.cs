@@ -1,36 +1,9 @@
 ﻿using ClockOrDie.WebApi.Controllers.CodeGen;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
 using ClockOrDie.Core;
 
 
 namespace ClockOrDie.WebApi.Controllers;
-
-public class CustomValidationFilter : IActionFilter
-{
-    public void OnActionExecuted(ActionExecutedContext context) { }
-
-    public void OnActionExecuting(ActionExecutingContext context)
-    {
-        if (!context.HttpContext.Request.HasJsonContentType())
-            context.Result = new UnsupportedMediaTypeResult();
-
-        if (context.ModelState.IsValid) return;
-        var details = new ValidationProblemDetails(context.ModelState);
-
-        var errors =
-            details.Errors.Select(e => new Error
-            {
-                Code = "Invalid_Payload_Format",
-                Message = string.Join('\n', e.Value)
-            }).ToArray();
-
-        var res =
-            new BadRequestObjectResult(errors)
-                { StatusCode = StatusCodes.Status400BadRequest};
-        context.Result = res;
-    }
-}
 
 public class ClockOrDieController : ICodeGenClockOrDieController
 {
@@ -41,29 +14,37 @@ public class ClockOrDieController : ICodeGenClockOrDieController
         _db = db;
     }
 
-    public async Task<IActionResult> SaveActivitiesTrackingAsync(IEnumerable<TimeSheetCell> body)
+    public async Task<IActionResult> SaveActivitiesTrackingAsync(IEnumerable<TimeSheetCell> content)
     {
-        throw new NotImplementedException();
+        var r = new ObjectResult("Not implemented yet !") 
+            { StatusCode = StatusCodes.Status501NotImplemented };
+        return await ValueTask.FromResult(r);
     }
 
     public async Task<ActionResult<TimeSheet>> GetTrackingForCurrentWeekAsync()
     {
-        throw new NotImplementedException();
+        var r = new ObjectResult("Not implemented yet!") 
+            { StatusCode = StatusCodes.Status501NotImplemented };
+        return await ValueTask.FromResult(r);
     }
 
-    public async Task<ActionResult<TimeSheet>> GetTrackingForWeekAsync(int week_number, int week_year)
+    public async Task<ActionResult<TimeSheet>> GetTrackingForWeekAsync(int weekNumber, int weekYear)
     {
-        throw new NotImplementedException();
+        var r = new ObjectResult("Not implemented yet!") 
+            { StatusCode = StatusCodes.Status501NotImplemented };
+        return await ValueTask.FromResult(r);
     }
 
     public async Task<ActionResult<ICollection<Activity>>> GetActivitiesForUserAsync()
     {
-        throw new NotImplementedException();
+        var r = new ObjectResult("Unknown error occured") 
+            { StatusCode = StatusCodes.Status501NotImplemented };
+        return await ValueTask.FromResult(r);
     }
 
-    public async Task<ActionResult<Activity>> CreateActivityAsync(string activity_name, ActivityDescription body)
+    public async Task<ActionResult<Activity>> CreateActivityAsync(string activityName, ActivityDescription body)
     {
-        var result = await Shell.saveActivity(_db, activity_name, body.Description, body.Tags);
+        var result = await Shell.saveActivity(_db, activityName, body.Description, body.Tags);
         if (result.IsOk)
         {
             return new Activity
@@ -76,11 +57,11 @@ public class ClockOrDieController : ICodeGenClockOrDieController
         switch (result.ErrorValue?.Tag ?? -1)
         {
             case Domain.AppError.Tags.TechnicalErr:
-                var techError = (Domain.AppError.TechnicalErr)result.ErrorValue;
+                var techError = (Domain.AppError.TechnicalErr)result.ErrorValue!;
                 return new ObjectResult(techError.Item) 
                     {StatusCode = StatusCodes.Status500InternalServerError};
             case Domain.AppError.Tags.BusinessErr:
-                var bizError = (Domain.AppError.BusinessErr)result.ErrorValue;
+                var bizError = (Domain.AppError.BusinessErr)result.ErrorValue!;
                 return new ObjectResult(bizError.Item)
                     { StatusCode = StatusCodes.Status400BadRequest};
             default:

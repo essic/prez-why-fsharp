@@ -10,7 +10,7 @@ module Shell =
             let! activitiesResult = db.GetAllActivities() 
             match activitiesResult with
             | Ok existingActivities ->
-                match saveActivity (existingActivities |> Set.ofSeq) name description tags with
+                match createOrUpdateActivity (existingActivities |> Set.ofSeq) name description tags with
                 | Err e -> return (e |> Seq.map (sprintf "%A") |> BusinessErr |> Error)
                 | Create newActivity ->return! db.CreateActivity newActivity 
                 | Update existingActivity -> return! db.UpdateActivity existingActivity 
