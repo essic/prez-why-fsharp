@@ -11,9 +11,9 @@ module Shell =
             match activitiesResult with
             | Ok existingActivities ->
                 match createOrUpdateActivity (existingActivities |> Set.ofSeq) name description tags with
-                | Err e -> return (e |> Seq.map (sprintf "%A") |> BusinessErr |> Error)
-                | Create newActivity ->return! db.CreateActivity newActivity 
-                | Update existingActivity -> return! db.UpdateActivity existingActivity 
+                | ActivityErr e -> return (e |> Seq.map (sprintf "%A") |> BusinessErr |> Error)
+                | CreateActivity newActivity ->return! db.CreateActivity newActivity 
+                | UpdateActivity existingActivity -> return! db.UpdateActivity existingActivity 
             | Error _ -> return ( "An error occured in database" |> Seq.singleton |> TechnicalErr |> Error)
         }
 
