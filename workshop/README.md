@@ -10,8 +10,8 @@
 This project uses :
 - [.NET 6.0 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
 - _F# 6_, which is included in the SDK, however, you can check this [website]() for more information.
-- We also use the currently available preview of _C# 10_. I recomand using the [EAP version of Rider](https://www.jetbrains.com/rider/nextversion/) due to some issues at the time of I am writing this (.NET 6 just got out and VS2022 on some OS have issues). You can either use [Visual Studio 2022 Preview](https://visualstudio.microsoft.com/fr/vs/preview/) or [Ionide using VsCode](https://ionide.io/) and some plugins for __C#__ . 
-- If you plan on modifying this workshop, you also need to install [npm](https://www.npmjs.com/) as well as [.NET 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1)
+- We also use the currently available preview of _C# 10_. I recomand using the [EAP version of Rider](https://www.jetbrains.com/rider/nextversion/) due to some issues at the time of writing this (.NET 6 just got out and VS2022 got some issues on OSX). You can also use [Visual Studio 2022 Preview](https://visualstudio.microsoft.com/fr/vs/preview/) or [Ionide using VsCode](https://ionide.io/) and some plugins for __C#__ . 
+- If you plan on modifying the API part of this workshop, you also need to install [npm](https://www.npmjs.com/) as well as [.NET 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1)
 
 ### For those who wish to setup the workshop
 
@@ -43,9 +43,14 @@ This project implements the __[Functional Core/Imperative Shell architecture](ht
 
 The project structure is as follow:
 1. __src/ClockOrDie.WebApi__ which host the web api code, entirely in C#
-2. __src/ClockOrDie.Core__ which host the business code, entirely in F#
-
-TODO: add detailed explanations ? 
+   - The file __Controllers/ClockOrDieController.cs__ contains the API part which will call _F# adapters_. Those adapaters are written in F#
+   - The file __Controllers/CustomValidationFilter.cs__ contains some validation code on request input
+3. __src/ClockOrDie.Core__ which host the business code, entirely in F#
+   - __Library.fs__ contains some example code use to demonstrate the usage of the _[FSI](https://docs.microsoft.com/en-us/dotnet/fsharp/tools/fsharp-interactive/)_ 
+   - __Domain.fs__ contains the code which implement the business logic. As required in the architecture we chose, this code is 100% synchrone and is completely free from concerns of the outside world.
+   - __Effects.fs__ infrastructure code needed to communicate with the outside world or to handle orther technical concerns. More on this during the workshop.
+   - __Shell.fs__ code that will be use by the outside world to realise our use cases. More on this during the workshop.
+   - __Step**.fs__ those files, are what we use to do the workshop.
 
 ### Step 01
 
