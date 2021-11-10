@@ -21,7 +21,7 @@ namespace ClockOrDie.WebApi.Controllers.CodeGen
     {
         /// <summary>Save activities tracking, for later validation.</summary>
         /// <returns>Saved</returns>
-        System.Threading.Tasks.Task<Microsoft.AspNetCore.Mvc.IActionResult> SaveActivitiesTrackingAsync(System.Collections.Generic.IEnumerable<TimeSheetCell> body);
+        System.Threading.Tasks.Task<Microsoft.AspNetCore.Mvc.IActionResult> SaveActivitiesTrackingAsync(System.Collections.Generic.IEnumerable<TimeSheetCell> content);
     
         /// <summary>Ask for the timesheet for the current week</summary>
         /// <returns>Weekly time sheets with activities status</returns>
@@ -29,7 +29,7 @@ namespace ClockOrDie.WebApi.Controllers.CodeGen
     
         /// <summary>Ask for the weekly timesheet for the given date.</summary>
         /// <returns>Weekly time sheets with activities status</returns>
-        System.Threading.Tasks.Task<Microsoft.AspNetCore.Mvc.ActionResult<TimeSheet>> GetTrackingForWeekAsync(int week_number, int week_year);
+        System.Threading.Tasks.Task<Microsoft.AspNetCore.Mvc.ActionResult<TimeSheet>> GetTrackingForWeekAsync(int weekNumber, int weekYear);
     
         /// <summary>Get activities for connected used.</summary>
         /// <returns>List of activities for the user</returns>
@@ -37,7 +37,7 @@ namespace ClockOrDie.WebApi.Controllers.CodeGen
     
         /// <summary>Add or update activities.</summary>
         /// <returns>Created</returns>
-        System.Threading.Tasks.Task<Microsoft.AspNetCore.Mvc.ActionResult<Activity>> CreateActivityAsync(string activity_name, ActivityDescription body);
+        System.Threading.Tasks.Task<Microsoft.AspNetCore.Mvc.ActionResult<Activity>> CreateActivityAsync(string activityName, ActivityDescription body);
     
     }
     

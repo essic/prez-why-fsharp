@@ -30,12 +30,16 @@ let ``Should update existing activity`` () =
         { IdActivity = Some 12
           Name = activityName
           Description = "Whatever"
-          Tags = [|"I"; "love"; "FSharp"|] } |> Set.singleton
+          Tags = [|"I"; "love"; "FSharp"|]
+          CreatedAt = DateTime(2020,01,01)
+          ModifiedAt = None } |> Set.singleton
     match saveActivity existingActivities activityName "New description" Seq.empty with
     | Update item ->
         item.Description = "New description" &&
         item.Name = "Whatever" &&
-        item.Tags = Array.empty
+        item.Tags = Array.empty &&
+        item.CreatedAt = DateTime(2020,01,01) &&
+        item.ModifiedAt.IsSome
     | r -> printfn "%A" r
            false
 
@@ -47,12 +51,16 @@ let ``Should update existing activity regardless of name case`` () =
         { IdActivity = Some 12
           Name = activityName
           Description = "Whatever"
-          Tags = [|"I"; "love"; "FSharp"|] } |> Set.singleton
+          Tags = [|"I"; "love"; "FSharp"|]
+          CreatedAt = DateTime(2020,01,01)
+          ModifiedAt = None } |> Set.singleton
     match saveActivity existingActivities "WHATEVER" "New description" Seq.empty with
     | Update item ->
         item.Description = "New description" &&
         item.Name = "Whatever" &&
-        item.Tags = Array.empty
+        item.Tags = Array.empty &&
+        item.CreatedAt = DateTime(2020,01,01) &&
+        item.ModifiedAt.IsSome
     | r -> printfn "%A" r
            false
 

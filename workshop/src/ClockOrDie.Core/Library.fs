@@ -3,7 +3,7 @@
 [<AutoOpen>]
 module Utils =
     let notYetImplementedFailure () =
-        failwith "Not yet implemented"
+        failwith "Core app needs implementation, get the F# magic !"
 
 module Say =
     let hello () : string =

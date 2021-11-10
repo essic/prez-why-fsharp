@@ -1,6 +1,7 @@
 namespace ClockOrDie.Core
 
 module Domain =
+    open System
     
     type AppError = 
         | BusinessErr of string seq
@@ -10,7 +11,9 @@ module Domain =
         { IdActivity: int option
           Name: string
           Tags: string array
-          Description: string }
+          Description: string
+          CreatedAt: DateTime
+          ModifiedAt: DateTime option }
 
     type ActivityOperationsError =
     | ActivityNameCannotBeNullOrEmpty
@@ -24,7 +27,7 @@ module Domain =
 
     module Services =
 
-        let saveActivity 
+        let createOrUpdateActivity 
             (existingActivities:Set<Activity>) 
             (name:string) 
             (description:string) 
