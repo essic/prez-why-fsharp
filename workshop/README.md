@@ -10,7 +10,7 @@
 This project uses :
 - [.NET 6.0 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
 - _F# 6_, which is included in the SDK, however, you can check this [website]() for more information.
-_ We also use the currently available preview of _C# 10_. I recomand using the [EAP version of Rider](https://www.jetbrains.com/rider/nextversion/) due to some issues at the time of I am writing this (.NET 6 just got out and VS2022 on some OS have issues). You can either use [Visual Studio 2022 Preview](https://visualstudio.microsoft.com/fr/vs/preview/) or [Ionide using VsCode](https://ionide.io/) and some plugins for __C#__ . 
+- We also use the currently available preview of _C# 10_. I recomand using the [EAP version of Rider](https://www.jetbrains.com/rider/nextversion/) due to some issues at the time of I am writing this (.NET 6 just got out and VS2022 on some OS have issues). You can either use [Visual Studio 2022 Preview](https://visualstudio.microsoft.com/fr/vs/preview/) or [Ionide using VsCode](https://ionide.io/) and some plugins for __C#__ . 
 - If you plan on modifying this workshop, you also need to install [npm](https://www.npmjs.com/) as well as [.NET 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1)
 
 ### For those who wish to setup the workshop
