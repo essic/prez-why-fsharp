@@ -21,9 +21,9 @@ module Domain =
     | DuplicatedTagsDetected
 
     type ActivityOperationsResult =
-    | Create of Activity
-    | Update of Activity
-    | Err of ActivityOperationsError list
+    | CreateActivity of Activity
+    | UpdateActivity of Activity
+    | ActivityErr of ActivityOperationsError list
 
     module Services =
 
