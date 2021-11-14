@@ -51,12 +51,12 @@ let ``Should update existing activity`` () =
           ModifiedAt = None } |> Set.singleton
     let activityName = $"{activityName}   "
     match createOrUpdateActivity existingActivities activityName "New description" Seq.empty with
-    | CreateActivity item ->
+    | UpdateActivity item ->
         item.Description = "New description" &&
         item.Name = "Whatever" &&
         item.Tags = Array.empty &&
         item.CreatedAt = DateTime(2020,01,01) &&
-        item.ModifiedAt.IsSome
+        item.ModifiedAt.IsSome && item.ModifiedAt.Value > item.CreatedAt
     | r -> printfn $"%A{r}"
            false
 
