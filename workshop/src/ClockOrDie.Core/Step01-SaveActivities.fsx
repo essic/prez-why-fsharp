@@ -38,7 +38,7 @@ let ``Should create new activity when none exists and remove useless spaces`` ()
     | r ->  printfn $"%A{r}"
             false
 
-//``Should create new activity when none exists and remove useless spaces`` () = true
+``Should create new activity when none exists and remove useless spaces`` () = true
 
 let ``Should update existing activity`` () =
     let activityName = "Whatever"

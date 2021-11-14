@@ -34,8 +34,8 @@ module Domain =
             (description:string) 
             (tags:string seq) : ActivityOperationsResult =
                 { IdActivity = None 
-                  Name = name 
-                  Description = description 
-                  Tags = Array.ofSeq tags
+                  Name = name.Trim()
+                  Description = description.Trim()
+                  Tags = tags |> Seq.map (fun e -> e.Trim()) |> Array.ofSeq
                   CreatedAt = DateTime.Now 
                   ModifiedAt = None } |> CreateActivity
