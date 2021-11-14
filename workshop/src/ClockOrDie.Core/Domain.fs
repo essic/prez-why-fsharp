@@ -38,7 +38,7 @@ module Domain =
             (tags:string seq) : ActivityOperationsResult =
                 let name,description,tags = (name |> trim, description |> trim, tags |> trimAll )
                 let isMatch activityName activity =
-                    activity.Name = activityName
+                    activity.Name.Equals(activityName,StringComparison.OrdinalIgnoreCase)
 
                 match existingActivities |> Seq.tryFind (isMatch name) with
                 | Some existingActivity ->

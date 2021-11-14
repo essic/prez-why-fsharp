@@ -81,7 +81,7 @@ let ``Should update existing activity regardless of name case`` () =
     | r -> printfn $"%A{r}"
            false
 
-//``Should update existing activity regardless of name case`` () = true
+``Should update existing activity regardless of name case`` () = true
 
 let ``Should fail when activity name is null or empty`` () =
     let res = [null; ""; "   "]
