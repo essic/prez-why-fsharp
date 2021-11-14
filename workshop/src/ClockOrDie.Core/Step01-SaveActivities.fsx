@@ -49,6 +49,7 @@ let ``Should update existing activity`` () =
           Tags = [|"I"; "love"; "FSharp"|]
           CreatedAt = DateTime(2020,01,01)
           ModifiedAt = None } |> Set.singleton
+    let activityName = $"{activityName}   "
     match createOrUpdateActivity existingActivities activityName "New description" Seq.empty with
     | CreateActivity item ->
         item.Description = "New description" &&
