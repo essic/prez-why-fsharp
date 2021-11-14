@@ -87,8 +87,6 @@ let ``Should fail when activity name is null or empty`` () =
     let res = [null; ""; "   "]
               |> List.map (fun name -> createOrUpdateActivity Set.empty name "description!" ["tag1; tag2; tag3"])
 
-    
-    
     match res with
     | [ActivityErr [ActivityNameCannotBeNullOrEmpty]
        ActivityErr [ActivityNameCannotBeNullOrEmpty]
