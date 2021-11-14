@@ -18,7 +18,9 @@ let ``Should create new activity when none exists`` () =
         activity.IdActivity = None &&
         activity.Name = "fake name" &&
         activity.Description = "description !" &&
-        activity.Tags = [| "tag1"; "tag2"; "tag3" |]
+        activity.Tags = [| "tag1"; "tag2"; "tag3" |] &&
+        activity.CreatedAt < DateTime.Now &&
+        activity.ModifiedAt = None
     | r ->  printfn $"%A{r}"
             false
 
