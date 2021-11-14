@@ -28,7 +28,7 @@ let ``Should create new activity when none exists`` () =
 //``Should create new activity when none exists`` () = true
 
 
-let ``Should create new activity when none exists and remove spaces`` () =
+let ``Should create new activity when none exists and remove useless spaces`` () =
     match createOrUpdateActivity Set.empty "  fake name" "   description !   " ["tag1   "; "tag2"; "tag3"] with
     | CreateActivity activity ->
         activity.IdActivity = None &&
@@ -38,7 +38,7 @@ let ``Should create new activity when none exists and remove spaces`` () =
     | r ->  printfn $"%A{r}"
             false
 
-//``Should create new activity when none exists and remove spaces`` () = true
+//``Should create new activity when none exists and remove useless spaces`` () = true
 
 let ``Should update existing activity`` () =
     let activityName = "Whatever"
