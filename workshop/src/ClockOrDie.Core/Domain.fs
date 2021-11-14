@@ -36,20 +36,23 @@ module Domain =
             (name:string) 
             (description:string) 
             (tags:string seq) : ActivityOperationsResult =
-                let name,description,tags = (name |> trim, description |> trim, tags |> trimAll )
-                let isMatch activityName activity =
-                    activity.Name.Equals(activityName,StringComparison.OrdinalIgnoreCase)
+                match String.IsNullOrWhiteSpace(name) with
+                | true -> ActivityErr [ActivityNameCannotBeNullOrEmpty]
+                | _ ->
+                    let name,description,tags = (name |> trim, description |> trim, tags |> trimAll )
+                    let isMatch activityName activity =
+                        activity.Name.Equals(activityName,StringComparison.OrdinalIgnoreCase)
 
-                match existingActivities |> Seq.tryFind (isMatch name) with
-                | Some existingActivity ->
-                    { existingActivity with
-                        Description = description
-                        Tags = tags |> Array.ofSeq 
-                        ModifiedAt = Some DateTime.Now } |> UpdateActivity
-                | None ->
-                    { IdActivity = None 
-                      Name = name
-                      Description = description
-                      Tags = tags |> Array.ofSeq
-                      CreatedAt = DateTime.Now 
-                      ModifiedAt = None } |> CreateActivity
+                    match existingActivities |> Seq.tryFind (isMatch name) with
+                    | Some existingActivity ->
+                        { existingActivity with
+                            Description = description
+                            Tags = tags |> Array.ofSeq 
+                            ModifiedAt = Some DateTime.Now } |> UpdateActivity
+                    | None ->
+                        { IdActivity = None 
+                          Name = name
+                          Description = description
+                          Tags = tags |> Array.ofSeq
+                          CreatedAt = DateTime.Now 
+                          ModifiedAt = None } |> CreateActivity

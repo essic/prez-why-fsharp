@@ -94,7 +94,7 @@ let ``Should fail when activity name is null or empty`` () =
     | r ->  printfn $"%A{r}"
             false
 
-// ``Should fail when activity name is null or empty`` () = true
+``Should fail when activity name is null or empty`` () = true
 
 let ``Should fail when description is null or empty`` () =
     let res = [null; ""; "   "]
