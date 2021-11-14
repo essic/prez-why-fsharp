@@ -25,7 +25,7 @@ let ``Should create new activity when none exists`` () =
             false
 
 // run expression below for test
-//``Should create new activity when none exists`` () = true
+``Should create new activity when none exists`` () = true
 
 
 let ``Should create new activity when none exists and remove useless spaces`` () =

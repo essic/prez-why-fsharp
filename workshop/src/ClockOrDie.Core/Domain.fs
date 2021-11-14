@@ -33,4 +33,9 @@ module Domain =
             (name:string) 
             (description:string) 
             (tags:string seq) : ActivityOperationsResult =
-                notYetImplementedFailure()
+                { IdActivity = None 
+                  Name = name 
+                  Description = description 
+                  Tags = Array.ofSeq tags
+                  CreatedAt = DateTime.Now 
+                  ModifiedAt = None } |> CreateActivity
