@@ -10,6 +10,8 @@ open ClockOrDie.Core.Domain.Services
 let ``Should say greetings`` () =
     Say.hello() = "Hello world !"
 
+``Should say greetings``() = true
+
 let ``Should create new activity when none exists`` () =
     match createOrUpdateActivity Set.empty "fake name" "description !" ["tag1"; "tag2"; "tag3"] with
     | CreateActivity activity ->
