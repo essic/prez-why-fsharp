@@ -28,14 +28,28 @@ module Domain =
 
     module Services =
 
+        let private trim (s:string) = s.Trim();
+        let private trimAll = Seq.map trim
+        
         let createOrUpdateActivity 
             (existingActivities:Set<Activity>) 
             (name:string) 
             (description:string) 
             (tags:string seq) : ActivityOperationsResult =
-                { IdActivity = None 
-                  Name = name.Trim()
-                  Description = description.Trim()
-                  Tags = tags |> Seq.map (fun e -> e.Trim()) |> Array.ofSeq
-                  CreatedAt = DateTime.Now 
-                  ModifiedAt = None } |> CreateActivity
+                let name,description,tags = (name |> trim, description |> trim, tags |> trimAll )
+                let isMatch activityName activity =
+                    activity.Name = activityName
+
+                match existingActivities |> Seq.tryFind (isMatch name) with
+                | Some existingActivity ->
+                    { existingActivity with
+                        Description = description
+                        Tags = tags |> Array.ofSeq 
+                        ModifiedAt = Some DateTime.Now } |> UpdateActivity
+                | None ->
+                    { IdActivity = None 
+                      Name = name
+                      Description = description
+                      Tags = tags |> Array.ofSeq
+                      CreatedAt = DateTime.Now 
+                      ModifiedAt = None } |> CreateActivity
