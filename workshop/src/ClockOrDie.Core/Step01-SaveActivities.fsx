@@ -132,7 +132,7 @@ let ``Should return all failures !``() =
           DuplicatedTagsDetected
           TagsCannotHaveNullOrEmptyValues ] |> Set.ofList
     match res with
-    | ActivityErr xs when (xs |> Set.ofSeq) |> Set.isProperSubset expected -> true
+    | ActivityErr xs when (xs |> Set.ofSeq) = expected -> true
     | r ->
         printfn $"%A{r}"
         false
