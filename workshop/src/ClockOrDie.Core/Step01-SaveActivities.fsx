@@ -132,7 +132,7 @@ let ``Should fail when duplicated tags are present`` () =
 // ``Should fail when duplicated tags are present`` () = true
 
 let ``Should return all failures !``() =
-    let res = createOrUpdateActivity Set.empty null "" ["  "; "tag2"; "tag2"]
+    let res = createOrUpdateActivity Set.empty null "" ["  "; "tag2"; "tag2"; ""; null]
     let expected =
         [ ActivityNameCannotBeNullOrEmpty
           DescriptionCannotBeNullOrEmpty
