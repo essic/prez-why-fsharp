@@ -40,12 +40,21 @@ module Domain =
         let private runNameValidation s =
             runValidation String.IsNullOrWhiteSpace ActivityNameCannotBeNullOrEmpty s
 
+        let private runTagsValidation s =
+            s 
+            |> Seq.collect (runValidation String.IsNullOrWhiteSpace TagsCannotHaveNullOrEmptyValues)
+            |> List.ofSeq
+
         let createOrUpdateActivity 
             (existingActivities:Set<Activity>) 
             (name:string) 
             (description:string) 
             (tags:string seq) : ActivityOperationsResult =
-                match List.concat [runNameValidation name; runDescriptionValidation description] with
+                let allValidation =
+                    [runNameValidation name
+                     runDescriptionValidation description
+                     runTagsValidation tags] |> List.concat
+                match allValidation with
                 | r when r |> List.isEmpty |> not -> ActivityErr r
                 | _ ->
                     let name,description,tags = (name |> trim, description |> trim, tags |> trimAll )

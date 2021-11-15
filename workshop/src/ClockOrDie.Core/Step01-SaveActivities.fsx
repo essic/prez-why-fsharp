@@ -121,7 +121,7 @@ let ``Should fail when tags have null or empty values`` () =
     | r ->  printfn $"%A{r}"
             false
 
-//``Should fail when tags have null or empty values`` () = true
+``Should fail when tags have null or empty values`` () = true
 
 let ``Should fail when duplicated tags are present`` () =
     match createOrUpdateActivity Set.empty "Whatever" "Description!" ["tag1"; "tag1"; "tag2"; "tag3"; "tag2"] with
