@@ -85,7 +85,7 @@ let ``Should update existing activity regardless of name case`` () =
 
 let ``Should fail when activity name is null or empty`` () =
     let res = [null; ""; "   "]
-              |> List.map (fun name -> createOrUpdateActivity Set.empty name "description!" ["tag1; tag2; tag3"])
+              |> List.map (fun name -> createOrUpdateActivity Set.empty name "description!" ["tag1"; "tag2"; "tag3"])
 
     match res with
     | [ActivityErr [ActivityNameCannotBeNullOrEmpty]
@@ -98,7 +98,7 @@ let ``Should fail when activity name is null or empty`` () =
 
 let ``Should fail when description is null or empty`` () =
     let res = [null; ""; "   "]
-              |> List.map (fun desc -> createOrUpdateActivity Set.empty "Whatever" desc ["tag1; tag2; tag3"])
+              |> List.map (fun desc -> createOrUpdateActivity Set.empty "Whatever" desc ["tag1"; "tag2"; "tag3"])
 
     match res with
     | [ActivityErr [DescriptionCannotBeNullOrEmpty]
@@ -108,6 +108,36 @@ let ``Should fail when description is null or empty`` () =
             false
 
 // ``Should fail when description is null or empty`` () = true
+
+
+let ``Should fail when tags have null or empty values`` () =
+    let res = [null; ""; "   "]
+              |> List.map (fun tag -> createOrUpdateActivity Set.empty "Whatever" "Wherever" [tag; "tag2"; "tag3"])
+
+    match res with
+    | [ActivityErr [DescriptionCannotBeNullOrEmpty]
+       ActivityErr [DescriptionCannotBeNullOrEmpty]
+       ActivityErr [DescriptionCannotBeNullOrEmpty]] -> true
+    | r ->  printfn $"%A{r}"
+            false
+
+//``Should fail when tags have null or empty values`` () = true
+
+
+let ``Should return all failures !``() =
+    let res = createOrUpdateActivity Set.empty null "" ["  "; "tag2"; "tag3"]
+    let expected =
+        [ ActivityNameCannotBeNullOrEmpty
+          DescriptionCannotBeNullOrEmpty
+          DuplicatedTagsDetected
+          TagsCannotHaveNullOrEmptyValues ] |> Set.ofList
+    match res with
+    | ActivityErr xs when (xs |> Set.ofSeq) |> Set.isProperSubset expected -> true
+    | r ->
+        printfn $"%A{r}"
+        false
+
+//``Should return all failures !``() = true
 
 let ``Should fail when duplicated tags are present`` () =
     match createOrUpdateActivity Set.empty "Whatever" "Description!" ["tag1; tag1; tag2"; "tag3"; "tag2"] with

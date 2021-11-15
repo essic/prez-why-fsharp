@@ -19,6 +19,7 @@ module Domain =
     | ActivityNameCannotBeNullOrEmpty
     | DescriptionCannotBeNullOrEmpty
     | DuplicatedTagsDetected
+    | TagsCannotHaveNullOrEmptyValues
 
     type ActivityOperationsResult =
     | CreateActivity of Activity
