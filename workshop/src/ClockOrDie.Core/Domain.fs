@@ -40,10 +40,15 @@ module Domain =
         let private runNameValidation s =
             runValidation String.IsNullOrWhiteSpace ActivityNameCannotBeNullOrEmpty s
 
-        let private runTagsValidation s =
+        let private runTagsEmptyValueValidation s =
             s 
             |> Seq.collect (runValidation String.IsNullOrWhiteSpace TagsCannotHaveNullOrEmptyValues)
             |> List.ofSeq
+
+        let private runTagsDuplicationValidaiton s =
+            let sList = s |> List.ofSeq
+            runValidation (fun _ -> 
+                (sList |> List.distinct |> List.length) <> (sList |> List.length)) DuplicatedTagsDetected s
 
         let createOrUpdateActivity 
             (existingActivities:Set<Activity>) 
@@ -53,7 +58,8 @@ module Domain =
                 let allValidation =
                     [runNameValidation name
                      runDescriptionValidation description
-                     runTagsValidation tags] |> List.concat
+                     runTagsEmptyValueValidation tags
+                     runTagsDuplicationValidaiton tags] |> List.concat
                 match allValidation with
                 | r when r |> List.isEmpty |> not -> ActivityErr r
                 | _ ->

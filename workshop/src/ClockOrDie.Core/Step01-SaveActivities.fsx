@@ -129,7 +129,7 @@ let ``Should fail when duplicated tags are present`` () =
     | r -> printfn $"%A{r}"
            false
 
-// ``Should fail when duplicated tags are present`` () = true
+``Should fail when duplicated tags are present`` () = true
 
 let ``Should return all failures !``() =
     let res = createOrUpdateActivity Set.empty null "" ["  "; "tag2"; "tag2"; ""; null]
