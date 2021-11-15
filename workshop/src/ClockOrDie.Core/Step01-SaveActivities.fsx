@@ -123,6 +123,13 @@ let ``Should fail when tags have null or empty values`` () =
 
 //``Should fail when tags have null or empty values`` () = true
 
+let ``Should fail when duplicated tags are present`` () =
+    match createOrUpdateActivity Set.empty "Whatever" "Description!" ["tag1"; "tag1"; "tag2"; "tag3"; "tag2"] with
+    | ActivityErr [DuplicatedTagsDetected] -> true
+    | r -> printfn $"%A{r}"
+           false
+
+// ``Should fail when duplicated tags are present`` () = true
 
 let ``Should return all failures !``() =
     let res = createOrUpdateActivity Set.empty null "" ["  "; "tag2"; "tag2"]
@@ -139,12 +146,6 @@ let ``Should return all failures !``() =
 
 //``Should return all failures !``() = true
 
-let ``Should fail when duplicated tags are present`` () =
-    match createOrUpdateActivity Set.empty "Whatever" "Description!" ["tag1; tag1; tag2"; "tag3"; "tag2"] with
-    | ActivityErr [DuplicatedTagsDetected] -> true
-    | r -> printfn $"%A{r}"
-           false
 
-// ``Should fail when duplicated tags are present`` () = true
 
 //SHOWCASE if there's time !: An example of how to add a use case !
