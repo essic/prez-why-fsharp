@@ -147,4 +147,4 @@ let ``Should fail when duplicated tags are present`` () =
 
 // ``Should fail when duplicated tags are present`` () = true
 
-//SHOWCASE if there's time !: An example on how to handle duplicated tags !
+//SHOWCASE if there's time !: An example of how to add a use case !
