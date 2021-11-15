@@ -37,9 +37,14 @@ public class ClockOrDieController : ICodeGenClockOrDieController
 
     public async Task<ActionResult<ICollection<Activity>>> GetActivitiesForUserAsync()
     {
-        var r = new ObjectResult("Unknown error occured")
-            { StatusCode = StatusCodes.Status501NotImplemented };
-        return await ValueTask.FromResult(r);
+        var result = await _db.GetAllActivities();
+        if (result.IsError)
+            return result.ErrorValue.ToActionResult();
+
+        return 
+            result.ResultValue
+            .Select(e => new Activity { ActivityId = e.IdActivity.Value, ActivityLabel = e.Name })
+            .ToArray();
     }
 
     public async Task<ActionResult<Activity>> CreateActivityAsync(string activityName, ActivityDescription body)
