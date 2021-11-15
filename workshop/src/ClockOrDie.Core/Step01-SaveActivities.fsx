@@ -144,7 +144,7 @@ let ``Should return all failures !``() =
         printfn $"%A{r}"
         false
 
-//``Should return all failures !``() = true
+``Should return all failures !``() = true
 
 
 

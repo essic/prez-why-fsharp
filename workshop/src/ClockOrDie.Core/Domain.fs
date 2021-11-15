@@ -43,7 +43,7 @@ module Domain =
         let private runTagsEmptyValueValidation s =
             s 
             |> Seq.collect (runValidation String.IsNullOrWhiteSpace TagsCannotHaveNullOrEmptyValues)
-            |> List.ofSeq
+            |> List.ofSeq |> List.distinct
 
         let private runTagsDuplicationValidaiton s =
             let sList = s |> List.ofSeq
