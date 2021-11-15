@@ -125,7 +125,7 @@ let ``Should fail when tags have null or empty values`` () =
 
 
 let ``Should return all failures !``() =
-    let res = createOrUpdateActivity Set.empty null "" ["  "; "tag2"; "tag3"]
+    let res = createOrUpdateActivity Set.empty null "" ["  "; "tag2"; "tag2"]
     let expected =
         [ ActivityNameCannotBeNullOrEmpty
           DescriptionCannotBeNullOrEmpty
