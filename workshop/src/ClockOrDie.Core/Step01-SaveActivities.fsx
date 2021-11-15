@@ -115,9 +115,9 @@ let ``Should fail when tags have null or empty values`` () =
               |> List.map (fun tag -> createOrUpdateActivity Set.empty "Whatever" "Wherever" [tag; "tag2"; "tag3"])
 
     match res with
-    | [ActivityErr [DescriptionCannotBeNullOrEmpty]
-       ActivityErr [DescriptionCannotBeNullOrEmpty]
-       ActivityErr [DescriptionCannotBeNullOrEmpty]] -> true
+    | [ActivityErr [TagsCannotHaveNullOrEmptyValues]
+       ActivityErr [TagsCannotHaveNullOrEmptyValues]
+       ActivityErr [TagsCannotHaveNullOrEmptyValues]] -> true
     | r ->  printfn $"%A{r}"
             false
 
