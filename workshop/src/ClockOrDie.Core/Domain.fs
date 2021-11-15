@@ -31,13 +31,22 @@ module Domain =
         let private trim (s:string) = s.Trim();
         let private trimAll = Seq.map trim
         
+        let private runValidation (isInvalid:'T -> bool ) (failure:ActivityOperationsError) (target:'T) : ActivityOperationsError list =
+            if target |> isInvalid then [failure] else []
+        
+        let private runDescriptionValidation s =
+            runValidation String.IsNullOrWhiteSpace DescriptionCannotBeNullOrEmpty s
+        
+        let private runNameValidation s =
+            runValidation String.IsNullOrWhiteSpace ActivityNameCannotBeNullOrEmpty s
+
         let createOrUpdateActivity 
             (existingActivities:Set<Activity>) 
             (name:string) 
             (description:string) 
             (tags:string seq) : ActivityOperationsResult =
-                match String.IsNullOrWhiteSpace(name) with
-                | true -> ActivityErr [ActivityNameCannotBeNullOrEmpty]
+                match List.concat [runNameValidation name; runDescriptionValidation description] with
+                | r when r |> List.isEmpty |> not -> ActivityErr r
                 | _ ->
                     let name,description,tags = (name |> trim, description |> trim, tags |> trimAll )
                     let isMatch activityName activity =
