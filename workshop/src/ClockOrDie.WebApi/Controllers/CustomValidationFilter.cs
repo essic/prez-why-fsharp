@@ -10,8 +10,11 @@ public class CustomValidationFilter : IActionFilter
 
     public void OnActionExecuting(ActionExecutingContext context)
     {
-        if (!context.HttpContext.Request.HasJsonContentType())
-            context.Result = new UnsupportedMediaTypeResult();
+        if (context.HttpContext.Request.Method == "POST" || context.HttpContext.Request.Method == "PUT")
+        {
+            if (!context.HttpContext.Request.HasJsonContentType())
+                context.Result = new UnsupportedMediaTypeResult();
+        }
 
         if (context.ModelState.IsValid) return;
         var details = new ValidationProblemDetails(context.ModelState);
