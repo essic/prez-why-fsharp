@@ -37,27 +37,45 @@ public class ClockOrDieController : ICodeGenClockOrDieController
 
     public async Task<ActionResult<ICollection<Activity>>> GetActivitiesForUserAsync()
     {
-        var result = await _db.GetAllActivities();
-        if (result.IsError)
-            return result.ErrorValue.ToActionResult();
+        try
+        {
+            var result = await _db.GetAllActivities();
+            if (result.IsError)
+                return result.ErrorValue.ToActionResult();
 
-        return 
-            result.ResultValue
-            .Select(e => new Activity { ActivityId = e.IdActivity.Value, ActivityLabel = e.Name })
-            .ToArray();
+            return
+                result.ResultValue
+                    .Select(e => new Activity { ActivityId = e.IdActivity.Value, ActivityLabel = e.Name })
+                    .ToArray();
+        }
+        catch (Exception e)
+        {
+            var r = new ObjectResult(e.Message)
+                { StatusCode = StatusCodes.Status500InternalServerError };
+            return await ValueTask.FromResult(r);
+        }
     }
 
     public async Task<ActionResult<Activity>> CreateActivityAsync(string activityName, ActivityDescription body)
     {
-        var result = await Shell.saveActivity(_db, activityName, body.Description, body.Tags);
-
-        if (result.IsError)
-            return result.ErrorValue.ToActionResult();
-        
-        return new Activity
+        try
         {
-            ActivityId = result.ResultValue.IdActivity.Value,
-            ActivityLabel = result.ResultValue.Name
-        };
+            var result = await Shell.saveActivity(_db, activityName, body.Description, body.Tags);
+
+            if (result.IsError)
+                return result.ErrorValue.ToActionResult();
+        
+            return new Activity
+            {
+                ActivityId = result.ResultValue.IdActivity.Value,
+                ActivityLabel = result.ResultValue.Name
+            };
+        }
+        catch (Exception e)
+        {
+            var r = new ObjectResult(e.Message)
+                { StatusCode = StatusCodes.Status500InternalServerError };
+            return await ValueTask.FromResult(r);
+        }
     }
 }
