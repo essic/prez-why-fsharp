@@ -193,6 +193,7 @@ let ``07. Should fail when description is null or empty`` () =
     //Assert
     test <@ results = expectedResults @>
 
+[<Fact>]
 let ``08. Should fail when tags have null or empty values`` () =
     //Arrange
     let operationTime = DateTime.Now
