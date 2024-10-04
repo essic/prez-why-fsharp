@@ -43,14 +43,20 @@ module Domain =
                 let areAllTagsValid =
                     tags |> Seq.forall (fun x -> String.IsNullOrWhiteSpace(x) |> not) = true
                 let cleanTags = tags |> Seq.filter (fun x -> x <> null) |> Seq.map (_.Trim())                    
-
+                let areThereNoDuplicatedTags =
+                    if areAllTagsValid then
+                        let sourceNb = tags |> Seq.length
+                        let cleanTagsNb = (cleanTags |> Seq.map(_.ToLower()) |> Set.ofSeq).Count
+                        sourceNb = cleanTagsNb
+                    else true
                 
-                if isNameValid && isDescriptionValid && areAllTagsValid then 
+                if isNameValid && isDescriptionValid && areAllTagsValid && areThereNoDuplicatedTags then 
                     Ok (name.Trim(), description.Trim(), cleanTags |> Array.ofSeq) 
                 else
                     [ if isNameValid then [] else [ActivityNameCannotBeNullOrEmpty]
                       if isDescriptionValid then [] else [DescriptionCannotBeNullOrEmpty]
-                      if areAllTagsValid then [] else [TagsCannotHaveNullOrEmptyValues] ]
+                      if areAllTagsValid then [] else [TagsCannotHaveNullOrEmptyValues]
+                      if areThereNoDuplicatedTags then [] else [DuplicatedTagsDetected]]
                     |> List.concat |> ActivityCreationOrUpdateFailure |> Error
                     
             match validateAndCleanEntries() with
