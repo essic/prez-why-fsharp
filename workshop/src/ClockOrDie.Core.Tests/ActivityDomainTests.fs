@@ -63,8 +63,8 @@ let ``03. Should create new activity when none exists and remove useless spaces`
           CreatedAt = DateTime.Now
           ModifiedAt = None }
     let subject =
-        {| name = "  fake name"
-           description = "   description !   "
+        {| name = "  Fake name"
+           description = "   A simple fake activity   "
            tags = [ "tag1   "; "tag2"; "tag3" ] |}
 
     //Act
