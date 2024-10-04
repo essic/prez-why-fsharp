@@ -36,25 +36,31 @@ module Domain =
             (description: string)
             (tags: string seq)
             : ActivityOperationsResult =
-                
-
-            let cleanName = name.Trim()
             let cleanDescription = description.Trim()
             let cleanTags = tags |> Seq.map (_.Trim()) |> Seq.toArray
             
-            match
-                existingActivities
-                |> Seq.map (fun x -> x.Name.ToLower(),x)
-                |> Map.ofSeq
-                |> Map.tryFind (cleanName.ToLower()) with
-            | Some entry ->
-                { entry with Description = cleanDescription; Tags = cleanTags; ModifiedAt = Some operationTime }
-                |> ActivityUpdateSuccess
-            | None ->
-                ActivityCreationSuccess
-                    { IdActivity = None
-                      Name = cleanName
-                      Tags = cleanTags
-                      Description = cleanDescription
-                      CreatedAt = operationTime
-                      ModifiedAt = None }
+            let validateAndCleanName str =
+                if String.IsNullOrWhiteSpace(str) |> not then
+                    Some <| str.Trim()
+                else     
+                    None
+                    
+            match validateAndCleanName name with
+            | None -> ActivityCreationOrUpdateFailure [ActivityNameCannotBeNullOrEmpty]
+            | Some cleanName ->
+                match
+                    existingActivities
+                    |> Seq.map (fun x -> x.Name.ToLower(),x)
+                    |> Map.ofSeq
+                    |> Map.tryFind (cleanName.ToLower()) with
+                | Some entry ->
+                    { entry with Description = cleanDescription; Tags = cleanTags; ModifiedAt = Some operationTime }
+                    |> ActivityUpdateSuccess
+                | None ->
+                    ActivityCreationSuccess
+                        { IdActivity = None
+                          Name = cleanName
+                          Tags = cleanTags
+                          Description = cleanDescription
+                          CreatedAt = operationTime
+                          ModifiedAt = None }
