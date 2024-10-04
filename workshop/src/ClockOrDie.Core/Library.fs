@@ -7,4 +7,4 @@ module Utils =
 
 module Say =
     let hello () : string =
-        notYetImplementedFailure()
+        "Hello world !"
