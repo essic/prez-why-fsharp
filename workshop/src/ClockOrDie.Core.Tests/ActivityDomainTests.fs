@@ -10,7 +10,13 @@ open ClockOrDie.Core.Domain.Services
 //Before we start
 
 let removeOddNumbers (numbers: int seq) : int seq =
-    failwith "Not implemented yet !"
+    let rec doIt (numbers: int list) (acc: int list) =
+        match numbers with
+        | [] -> acc |> List.rev
+        | n::ns ->
+            doIt ns <| if n % 2 = 0 then n :: acc else acc            
+    
+    doIt (List.ofSeq numbers) []
 
 [<Fact>]
 let ``00. Let's write a test`` () =
