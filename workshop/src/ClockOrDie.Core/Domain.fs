@@ -37,10 +37,23 @@ module Domain =
             (tags: string seq)
             : ActivityOperationsResult =
 
-            ActivityCreationSuccess
-                { IdActivity = None
-                  Name = name.Trim()
-                  Tags = tags |> Seq.map (_.Trim()) |> Array.ofSeq
-                  Description = description.Trim()
-                  CreatedAt = operationTime
-                  ModifiedAt = None }
+            let cleanName = name.Trim()
+            let cleanDescription = description.Trim()
+            let cleanTags = tags |> Seq.map (_.Trim()) |> Seq.toArray
+            
+            match
+                existingActivities
+                |> Seq.map (fun x -> x.Name,x)
+                |> Map.ofSeq
+                |> Map.tryFind cleanName with
+            | Some entry ->
+                { entry with Description = cleanDescription; Tags = cleanTags; ModifiedAt = Some operationTime }
+                |> ActivityUpdateSuccess
+            | None ->
+                ActivityCreationSuccess
+                    { IdActivity = None
+                      Name = cleanName
+                      Tags = cleanTags
+                      Description = cleanDescription
+                      CreatedAt = operationTime
+                      ModifiedAt = None }
