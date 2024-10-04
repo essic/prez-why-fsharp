@@ -55,20 +55,24 @@ let ``02. Should create new activity when none exists`` () =
 let ``03. Should create new activity when none exists and remove useless spaces`` () =
     //Arrange
     let operationTime = DateTime.Now
-    let subject =
+    let expectedResult =
         { IdActivity = None
           Name = "Fake name"
           Tags = [| "tag1"; "tag2"; "tag3" |]
           Description = "A simple fake activity"
           CreatedAt = DateTime.Now
           ModifiedAt = None }
+    let subject =
+        {| name = "  fake name"
+           description = "   description !   "
+           tags = [ "tag1   "; "tag2"; "tag3" ] |}
 
     //Act
     let result =
-        createOrUpdateActivity operationTime Set.empty "  fake name" "   description !   " [ "tag1   "; "tag2"; "tag3" ]
+        createOrUpdateActivity operationTime Set.empty subject.name subject.description subject.tags  
 
     //Assert
-    test <@ result = ActivityCreationSuccess subject @>
+    test <@ result = ActivityCreationSuccess expectedResult @>
 
 [<Fact>]
 let ``04. Should update existing activity`` () =
