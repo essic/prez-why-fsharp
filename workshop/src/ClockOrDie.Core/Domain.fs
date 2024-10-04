@@ -39,8 +39,8 @@ module Domain =
 
             ActivityCreationSuccess
                 { IdActivity = None
-                  Name = name
-                  Tags = tags |> Array.ofSeq
-                  Description = description
+                  Name = name.Trim()
+                  Tags = tags |> Seq.map (_.Trim()) |> Array.ofSeq
+                  Description = description.Trim()
                   CreatedAt = operationTime
                   ModifiedAt = None }
