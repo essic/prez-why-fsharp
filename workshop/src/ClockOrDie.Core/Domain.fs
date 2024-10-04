@@ -36,6 +36,7 @@ module Domain =
             (description: string)
             (tags: string seq)
             : ActivityOperationsResult =
+                
 
             let cleanName = name.Trim()
             let cleanDescription = description.Trim()
@@ -43,9 +44,9 @@ module Domain =
             
             match
                 existingActivities
-                |> Seq.map (fun x -> x.Name,x)
+                |> Seq.map (fun x -> x.Name.ToLower(),x)
                 |> Map.ofSeq
-                |> Map.tryFind cleanName with
+                |> Map.tryFind (cleanName.ToLower()) with
             | Some entry ->
                 { entry with Description = cleanDescription; Tags = cleanTags; ModifiedAt = Some operationTime }
                 |> ActivityUpdateSuccess
