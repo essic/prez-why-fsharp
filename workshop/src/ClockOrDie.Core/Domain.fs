@@ -36,18 +36,22 @@ module Domain =
             (description: string)
             (tags: string seq)
             : ActivityOperationsResult =
-            let cleanDescription = description.Trim()
             let cleanTags = tags |> Seq.map (_.Trim()) |> Seq.toArray
             
-            let validateAndCleanName str =
-                if String.IsNullOrWhiteSpace(str) |> not then
-                    Some <| str.Trim()
-                else     
-                    None
+            let validateAndCleanNameAndDescription () =
+                let isNameValid = String.IsNullOrWhiteSpace(name) |> not
+                let isDescriptionValid = String.IsNullOrWhiteSpace(description) |> not
+                
+                if isNameValid && isDescriptionValid then
+                    Ok (name.Trim(), description.Trim())
+                else
+                    [ if isNameValid then [] else [ActivityNameCannotBeNullOrEmpty]
+                      if isDescriptionValid then [] else [DescriptionCannotBeNullOrEmpty] ]
+                    |> List.concat |> ActivityCreationOrUpdateFailure |> Error
                     
-            match validateAndCleanName name with
-            | None -> ActivityCreationOrUpdateFailure [ActivityNameCannotBeNullOrEmpty]
-            | Some cleanName ->
+            match validateAndCleanNameAndDescription() with
+            | Error err -> err
+            | Ok (cleanName,cleanDescription) ->
                 match
                     existingActivities
                     |> Seq.map (fun x -> x.Name.ToLower(),x)
