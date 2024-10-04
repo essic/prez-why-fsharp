@@ -5,16 +5,16 @@ namespace ClockOrDie.WebApi;
 
 public static class AppErrorExt
 {
-    public static ActionResult ToActionResult(this Domain.AppError? err)
+    public static ActionResult ToActionResult(this Domain.ApplicationError? err)
     {
         switch (err?.Tag ?? -1)
         {
-            case Domain.AppError.Tags.TechnicalErr:
-                var techError = (Domain.AppError.TechnicalErr)err!;
+            case Domain.ApplicationError.Tags.TechnicalErr:
+                var techError = (Domain.ApplicationError.TechnicalErr)err!;
                 return new ObjectResult(techError.Item)
                     { StatusCode = StatusCodes.Status500InternalServerError };
-            case Domain.AppError.Tags.BusinessErr:
-                var bizError = (Domain.AppError.BusinessErr)err!;
+            case Domain.ApplicationError.Tags.BusinessErr:
+                var bizError = (Domain.ApplicationError.BusinessErr)err!;
                 return new ObjectResult(bizError.Item)
                     { StatusCode = StatusCodes.Status400BadRequest };
             default:

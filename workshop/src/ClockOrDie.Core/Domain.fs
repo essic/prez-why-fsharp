@@ -2,12 +2,13 @@ namespace ClockOrDie.Core
 
 module Domain =
     open System
-    
-    type AppError = 
+
+    type ApplicationError =
         | BusinessErr of string seq
         | TechnicalErr of string seq
 
-    type [<Struct>] Activity = 
+    [<Struct>]
+    type Activity =
         { IdActivity: int option
           Name: string
           Tags: string array
@@ -15,22 +16,24 @@ module Domain =
           CreatedAt: DateTime
           ModifiedAt: DateTime option }
 
-    type ActivityOperationsError =
-    | ActivityNameCannotBeNullOrEmpty
-    | DescriptionCannotBeNullOrEmpty
-    | DuplicatedTagsDetected
-    | TagsCannotHaveNullOrEmptyValues
+    type ActivityServiceError =
+        | ActivityNameCannotBeNullOrEmpty
+        | DescriptionCannotBeNullOrEmpty
+        | DuplicatedTagsDetected
+        | TagsCannotHaveNullOrEmptyValues
 
     type ActivityOperationsResult =
-    | CreateActivity of Activity
-    | UpdateActivity of Activity
-    | ActivityErr of ActivityOperationsError list
+        | ActivityCreationSuccess of Activity
+        | ActivityUpdateSuccess of Activity
+        | ActivityCreationOrUpdateFailure of ActivityServiceError list
 
     module Services =
 
-        let createOrUpdateActivity 
-            (existingActivities:Set<Activity>) 
-            (name:string) 
-            (description:string) 
-            (tags:string seq) : ActivityOperationsResult =
-                notYetImplementedFailure()
+        let createOrUpdateActivity
+            (operationTime: DateTime)
+            (existingActivities: Set<Activity>)
+            (name: string)
+            (description: string)
+            (tags: string seq)
+            : ActivityOperationsResult =
+            notYetImplementedFailure ()

@@ -7,23 +7,23 @@ public class FakeDb : Effects.IHandleDatabaseOperations
 {
     private readonly HashSet<Domain.Activity> _activities = new();
     
-    public async Task<FSharpResult<IEnumerable<Domain.Activity>, Domain.AppError>> GetAllActivities()
+    public async Task<FSharpResult<IEnumerable<Domain.Activity>, Domain.ApplicationError>> GetAllActivities()
     {
-        var result = FSharpResult<IEnumerable<Domain.Activity>, Domain.AppError>.NewOk(_activities.ToArray());
+        var result = FSharpResult<IEnumerable<Domain.Activity>, Domain.ApplicationError>.NewOk(_activities.ToArray());
         return await ValueTask.FromResult(result);
     }
 
-    public async Task<FSharpResult<Domain.Activity, Domain.AppError>> CreateActivity(Domain.Activity item)
+    public async Task<FSharpResult<Domain.Activity, Domain.ApplicationError>> CreateActivity(Domain.Activity item)
     {
         if (FSharpOption<DateTime>.get_IsSome(item.ModifiedAt))
-            return FSharpResult<Domain.Activity, Domain.AppError>.NewError(
-                Domain.AppError.NewTechnicalErr(new[] { "Cannot create activity with a modified field already set" }));
+            return FSharpResult<Domain.Activity, Domain.ApplicationError>.NewError(
+                Domain.ApplicationError.NewTechnicalErr(new[] { "Cannot create activity with a modified field already set" }));
 
-        FSharpResult<Domain.Activity, Domain.AppError> result;
+        FSharpResult<Domain.Activity, Domain.ApplicationError> result;
         if (_activities.Any(e => e.IdActivity.Equals(item.IdActivity)))
         {
             result =
-                FSharpResult<Domain.Activity, Domain.AppError>.NewError(Domain.AppError.NewBusinessErr(
+                FSharpResult<Domain.Activity, Domain.ApplicationError>.NewError(Domain.ApplicationError.NewBusinessErr(
                     new[] { "Cannot create an activity which already exists !" }));
         } else
         {
@@ -34,29 +34,29 @@ public class FakeDb : Effects.IHandleDatabaseOperations
                 new Domain.Activity(FSharpOption<int>.Some(newId), item.Name,
                     item.Tags, item.Description,item.CreatedAt,item.ModifiedAt);
             _activities.Add(newItem);
-            result = FSharpResult<Domain.Activity, Domain.AppError>.NewOk(newItem);
+            result = FSharpResult<Domain.Activity, Domain.ApplicationError>.NewOk(newItem);
         }
 
         return await ValueTask.FromResult(result);
     }
 
-    public async Task<FSharpResult<Domain.Activity, Domain.AppError>> UpdateActivity(Domain.Activity item)
+    public async Task<FSharpResult<Domain.Activity, Domain.ApplicationError>> UpdateActivity(Domain.Activity item)
     {
-        FSharpResult<Domain.Activity, Domain.AppError> result;
+        FSharpResult<Domain.Activity, Domain.ApplicationError> result;
         if (!_activities.Any(e => e.IdActivity.Equals(item.IdActivity)))
         {
             result =
-                FSharpResult<Domain.Activity, Domain.AppError>
-                    .NewError(Domain.AppError.NewTechnicalErr(new[] { "Cannot find activity to update !" }));
+                FSharpResult<Domain.Activity, Domain.ApplicationError>
+                    .NewError(Domain.ApplicationError.NewTechnicalErr(new[] { "Cannot find activity to update !" }));
         }
         else
         {
             _activities.RemoveWhere(e => e.IdActivity.Equals(item.IdActivity));
             _activities.Add(item);
             result = FSharpOption<DateTime>.get_IsSome(item.ModifiedAt)
-                ? FSharpResult<Domain.Activity, Domain.AppError>.NewOk(item)
-                : FSharpResult<Domain.Activity, Domain.AppError>.NewError(
-                    Domain.AppError.NewTechnicalErr(
+                ? FSharpResult<Domain.Activity, Domain.ApplicationError>.NewOk(item)
+                : FSharpResult<Domain.Activity, Domain.ApplicationError>.NewError(
+                    Domain.ApplicationError.NewTechnicalErr(
                         new[] { $"Cannot update activity, {nameof(item.ModifiedAt)} not set to a value!" }));
         }
 

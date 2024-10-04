@@ -1,2 +1,5 @@
+FSharp.Core
+
+group WebApi
 Swashbuckle.AspNetCore
 Newtonsoft.Json

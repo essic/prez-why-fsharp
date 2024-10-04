@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClockOrDie.WebApi", "src\Cl
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ClockOrDie.Core", "src\ClockOrDie.Core\ClockOrDie.Core.fsproj", "{E0896266-869C-45EA-9952-7AFD4FB18D96}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ClockOrDie.Core.Tests", "src\ClockOrDie.Core.Tests\ClockOrDie.Core.Tests.fsproj", "{72522EF7-125F-449E-BA55-9EBF50B2A78F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,9 +28,14 @@ Global
 		{E0896266-869C-45EA-9952-7AFD4FB18D96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0896266-869C-45EA-9952-7AFD4FB18D96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0896266-869C-45EA-9952-7AFD4FB18D96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72522EF7-125F-449E-BA55-9EBF50B2A78F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72522EF7-125F-449E-BA55-9EBF50B2A78F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72522EF7-125F-449E-BA55-9EBF50B2A78F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72522EF7-125F-449E-BA55-9EBF50B2A78F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4C3FF46A-E445-477A-8908-AFBB13845CB4} = {B4D46A86-D2E5-468F-9CE7-C4B07F473ADA}
 		{E0896266-869C-45EA-9952-7AFD4FB18D96} = {B4D46A86-D2E5-468F-9CE7-C4B07F473ADA}
+		{72522EF7-125F-449E-BA55-9EBF50B2A78F} = {B4D46A86-D2E5-468F-9CE7-C4B07F473ADA}
 	EndGlobalSection
 EndGlobal

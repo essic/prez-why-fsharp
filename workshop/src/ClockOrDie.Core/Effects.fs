@@ -6,10 +6,10 @@ module Effects =
 
     type IHandleDatabaseOperations =
         abstract member GetAllActivities:
-            Unit -> Task<Result<Activity seq, AppError>>
+            Unit -> Task<Result<Activity seq, ApplicationError>>
 
         abstract member CreateActivity :
-            item:Activity -> Task<Result<Activity,AppError>>
+            item:Activity -> Task<Result<Activity,ApplicationError>>
 
         abstract member UpdateActivity :
-            item:Activity -> Task<Result<Activity,AppError>>
+            item:Activity -> Task<Result<Activity,ApplicationError>>

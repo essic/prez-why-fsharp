@@ -8,9 +8,9 @@
 ### Pre-requisite
 
 This project uses :
-- [.NET 6.0 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
-- _F# 6_, which is included in the SDK, however, you can check this [website]() for more information.
-- We also use the currently available preview of _C# 10_. I recomand using the [EAP version of Rider](https://www.jetbrains.com/rider/nextversion/) due to some issues at the time of writing this (.NET 6 just got out and VS2022 got some issues on OSX). You can also use [Visual Studio 2022 Preview](https://visualstudio.microsoft.com/fr/vs/preview/) or [Ionide using VsCode](https://ionide.io/) and some plugins for __C#__ . 
+- [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
+- _F# 8_, which is included in the SDK, however, you can check this [website]() for more information.
+- We also use _C# 11_. 
 - If you plan on modifying the API part of this workshop, you also need to install [npm](https://www.npmjs.com/) as well as [.NET 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1)
 
 ### For those who wish to setup the workshop
@@ -33,26 +33,23 @@ To install the tool, I recommend using npm. _Make sure that you have the .net2.1
 
 __PLEASE NOTE:__ _If you change the name of the output file, you will need to adjust the project accordingly_
 
-## Let's code F# !
+## Let's code in F# !
 
 In this workshop, we will code a very simple __Time Tracker__ API, in order to demonstrate F# in a more realistic/practical context.
 
 In order to focus on the F# language and demonstrate its compatibility with C#, we will also use C#.
 
-This project implements the __[Functional Core/Imperative Shell architecture](https://www.kennethlange.com/functional-core-imperative-shell/)__ . In short it allows to separate _business constraints_ with _technical ones_ by getting rid of _side effects_ within the _business code_. This is not the focus of this workshop, so we won't get deeper into that. 
+This project implements the __[Functional Core/Imperative Shell architecture](https://www.kennethlange.com/functional-core-imperative-shell/)__ .
+
+In short it allows to separate _business constraints_ from _technical ones_ by getting rid of _side effects_ within the _business code_ 
 
 The project structure is as follow:
 1. __src/ClockOrDie.WebApi__ which host the web api code, entirely in C#
-   - The file __Controllers/ClockOrDieController.cs__ contains the API part which will call _F# adapters_. Those adapaters are written in F#
+   - The file __Controllers/ClockOrDieController.cs__ contains the API part which will call _F# adapters_.
    - The file __Controllers/CustomValidationFilter.cs__ contains some validation code on request input
-3. __src/ClockOrDie.Core__ which host the business code, entirely in F#
-   - __Library.fs__ contains some example code use to demonstrate the usage of the _[FSI](https://docs.microsoft.com/en-us/dotnet/fsharp/tools/fsharp-interactive/)_ 
-   - __Domain.fs__ contains the code which implement the business logic. As required in the architecture we chose, this code is 100% synchrone and is completely free from concerns of the outside world.
-   - __Effects.fs__ infrastructure code needed to communicate with the outside world or to handle orther technical concerns. More on this during the workshop.
+2.__src/ClockOrDie.Core__ which host the business code, entirely in F#
+   - __Domain.fs__ contains the code which implement the business logic. As required in the architecture we chose, this code is 100% synchrone and free of side effects. Therefore it is completely free from concerns of the outside world.
+   - __Effects.fs__ infrastructure code needed to communicate with the outside world with other technical concerns.
    - __Shell.fs__ code that will be use by the outside world to realise our use cases. More on this during the workshop.
-   - __Step**.fs__ those files, are what we use to do the workshop.
-
-### Step 01
-
-Using the [FSI](https://docs.microsoft.com/en-us/dotnet/fsharp/tools/fsharp-interactive/) of your favourite IDE complete methods in the file _Step01-SaveActivities.fsx_ in the _ClockOrDie.Core_.
-When all step have been completed, you can run the project, and using the swagger, you can call __admin/activities/{activity_name}__
+3.__src/ClockOrDie.Core.Tests__ which host a test project, entirely in F#, using Xunit & Unquote (for assertion)
+   - __ActivityDomainTests.fs__ is a set of unit failing tests. The workshop consists of passing those test green. 

@@ -1,16 +1,22 @@
-source https://api.nuget.org/v3/index.json
 
 storage: none
-framework: net6.0, netstandard2.0, netstandard2.1
-nuget Newtonsoft.Json
-nuget Swashbuckle.AspNetCore
-
-group: Core
 source https://api.nuget.org/v3/index.json
-framework: net6.0, netstandard2.0, netstandard2.1
-
-group Core
-source https://www.nuget.org/api/v2
+framework: net8.0, netstandard2.1
 generate_load_scripts: true
-
 nuget FSharp.Core redirects: force
+
+group Test
+source https://api.nuget.org/v3/index.json
+framework: net8.0, netstandard2.1
+nuget Unquote
+nuget coverlet.collector
+nuget xunit.runner.visualstudio //2.4.3
+nuget xunit.runner.console 
+nuget xunit //2.4.1
+nuget Microsoft.NET.Test.Sdk //17.1.0
+
+group WebApi
+source https://api.nuget.org/v3/index.json
+framework: net8.0, netstandard2.1
+nuget Swashbuckle.AspNetCore
+nuget Newtonsoft.Json
