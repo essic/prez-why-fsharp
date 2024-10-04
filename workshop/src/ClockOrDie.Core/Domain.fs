@@ -36,4 +36,11 @@ module Domain =
             (description: string)
             (tags: string seq)
             : ActivityOperationsResult =
-            notYetImplementedFailure ()
+
+            ActivityCreationSuccess
+                { IdActivity = None
+                  Name = name
+                  Tags = tags |> Array.ofSeq
+                  Description = description
+                  CreatedAt = operationTime
+                  ModifiedAt = None }
