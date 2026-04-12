@@ -1,6 +1,5 @@
-FSharp.Core
-
 group Test
+    FSharp.Core
     Unquote
     Microsoft.NET.Test.Sdk
     xunit
