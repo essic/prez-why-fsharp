@@ -8,9 +8,9 @@
 ### Pre-requisite
 
 This project uses :
-- [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
-- _F# 8_, which is included in the SDK, however, you can check this [website]() for more information.
-- We also use _C# 11_. 
+- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
+- _F# 9_, which is included in the SDK, however, you can check this [website]() for more information.
+- We also use _C# 14_.
 - If you plan on modifying the API part of this workshop, you also need to install [npm](https://www.npmjs.com/) as well as [.NET 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1)
 
 ### For those who wish to setup the workshop
