@@ -16,8 +16,16 @@ This project uses :
 ### For those who wish to setup the workshop
 
 From the current folder, run the following:
-1. `dotnet tool restore` to restore [paket](https://fsprojects.github.io/Paket/) tool use to handle project's dependencies.
-1. `dotnet restore` to restore project dependencies
+1. `dotnet tool restore` to restore [paket](https://fsprojects.github.io/Paket/), the tool used to handle project dependencies.
+1. `dotnet paket install` to resolve and install all project dependencies.
+1. `dotnet build` to build the solution.
+
+To run the tests:
+```bash
+dotnet test
+```
+
+Tests use [xUnit v3](https://xunit.net/) with [Microsoft.Testing.Platform (MTP)](https://learn.microsoft.com/dotnet/core/testing/microsoft-testing-platform-intro) as the test runner, and [Unquote](https://github.com/SwensenSoftware/unquote) for assertions. The MTP runner is configured in `global.json`.
 
 ### For those who plan on modifying the API
 
@@ -51,5 +59,5 @@ The project structure is as follow:
    - __Domain.fs__ contains the code which implement the business logic. As required in the architecture we chose, this code is 100% synchrone and free of side effects. Therefore it is completely free from concerns of the outside world.
    - __Effects.fs__ infrastructure code needed to communicate with the outside world with other technical concerns.
    - __Shell.fs__ code that will be use by the outside world to realise our use cases. More on this during the workshop.
-3.__src/ClockOrDie.Core.Tests__ which host a test project, entirely in F#, using Xunit & Unquote (for assertion)
-   - __ActivityDomainTests.fs__ is a set of unit failing tests. The workshop consists of passing those test green. 
+3.__src/ClockOrDie.Core.Tests__ which host a test project, entirely in F#, using xUnit v3 (with Microsoft.Testing.Platform) & Unquote (for assertions)
+   - __ActivityDomainTests.fs__ is a set of unit failing tests. The workshop consists of making those tests pass.
