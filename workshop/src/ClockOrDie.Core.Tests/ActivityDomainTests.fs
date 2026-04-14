@@ -17,13 +17,13 @@ let ``00. Let's write a test`` () =
     //Arrange
     let expectedResult = [0; 2; 4; 6; 8; 10]
     let sut = [0; 1; 2; 3; 4; 5; 6; 7; 8; 9; 10]
-    
+
     //Act
     let result = removeOddNumbers sut
-    
+
     //Assert
     test <@ result = expectedResult @>
- 
+
 
 [<Fact>]
 let ``01. Should say greetings`` () =
@@ -69,7 +69,7 @@ let ``03. Should create new activity when none exists and remove useless spaces`
 
     //Act
     let result =
-        createOrUpdateActivity operationTime Set.empty subject.name subject.description subject.tags  
+        createOrUpdateActivity operationTime Set.empty subject.name subject.description subject.tags
 
     //Assert
     test <@ result = ActivityCreationSuccess expectedResult @>
@@ -119,7 +119,7 @@ let ``04. Should update existing activity`` () =
 let ``05. Should update existing activity regardless of name case`` () =
     //Arrange
     let creationTime = DateTime.Now.AddDays(-1)
-    let updateTime = DateTime.Now    
+    let updateTime = DateTime.Now
     let activityName = "Whatever"
 
     let existingActivity =
