@@ -10,9 +10,9 @@ source https://api.nuget.org/v3/index.json
 framework: net10.0, netstandard2.1
 nuget FSharp.Core redirects: force
 nuget Unquote
-nuget xunit.v3.mtp-v2
-nuget Microsoft.Testing.Platform ~> 2
-nuget Microsoft.Testing.Platform.MSBuild ~> 2
+nuget xunit
+nuget xunit.runner.visualstudio
+nuget Microsoft.NET.Test.Sdk
 
 group WebApi
 source https://api.nuget.org/v3/index.json
