@@ -4,6 +4,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <NoWarn>$(NoWarn);NU1510</NoWarn>
+    <RunSettingsFilePath>$(MSBuildProjectDirectory)\.runsettings</RunSettingsFilePath>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ActivityDomainTests.fs" />
@@ -13,7 +14,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="paket.references" />
-    <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>
