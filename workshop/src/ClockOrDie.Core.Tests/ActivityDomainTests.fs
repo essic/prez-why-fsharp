@@ -1,8 +1,8 @@
 module ActivityDomainTests
 
 open System
-open Xunit
-open Swensen.Unquote
+open NUnit.Framework
+open FsUnit
 open ClockOrDie.Core
 open ClockOrDie.Core.Domain
 open ClockOrDie.Core.Domain.Services
@@ -12,7 +12,7 @@ open ClockOrDie.Core.Domain.Services
 let removeOddNumbers (numbers: int seq) : int seq =
     failwith "Not implemented yet !"
 
-[<Fact>]
+[<Test>]
 let ``00. Let's write a test`` () =
     //Arrange
     let expectedResult = [0; 2; 4; 6; 8; 10]
@@ -22,17 +22,17 @@ let ``00. Let's write a test`` () =
     let result = removeOddNumbers sut
 
     //Assert
-    test <@ result = expectedResult @>
+    result |> should equal expectedResult
 
 
-[<Fact>]
+[<Test>]
 let ``01. Should say greetings`` () =
-    test <@ Say.hello () = "Hello world !" @>
+    Say.hello () |> should equal "Hello world !"
 
 
 // Now let's get started !
 
-[<Fact>]
+[<Test>]
 let ``02. Should create new activity when none exists`` () =
     //Arrange
     let operationTime = DateTime.Now
@@ -49,9 +49,9 @@ let ``02. Should create new activity when none exists`` () =
         createOrUpdateActivity operationTime Set.empty subject.Name subject.Description subject.Tags
 
     //Assert
-    test <@ result = ActivityCreationSuccess subject @>
+    result |> should equal (ActivityCreationSuccess subject)
 
-[<Fact>]
+[<Test>]
 let ``03. Should create new activity when none exists and remove useless spaces`` () =
     //Arrange
     let operationTime = DateTime.Now
@@ -72,9 +72,9 @@ let ``03. Should create new activity when none exists and remove useless spaces`
         createOrUpdateActivity operationTime Set.empty subject.name subject.description subject.tags
 
     //Assert
-    test <@ result = ActivityCreationSuccess expectedResult @>
+    result |> should equal (ActivityCreationSuccess expectedResult)
 
-[<Fact>]
+[<Test>]
 let ``04. Should update existing activity`` () =
     //Arrange
     let creationTime = DateTime.Now.AddDays(-1)
@@ -113,9 +113,9 @@ let ``04. Should update existing activity`` () =
         | _ -> failwith "Test failure ! Update has failed !"
 
     //Assert
-    test <@ result = expectedActivityResult @>
+    result |> should equal expectedActivityResult
 
-[<Fact>]
+[<Test>]
 let ``05. Should update existing activity regardless of name case`` () =
     //Arrange
     let creationTime = DateTime.Now.AddDays(-1)
@@ -154,9 +154,9 @@ let ``05. Should update existing activity regardless of name case`` () =
         | _ -> failwith "Test failure ! Update has failed !"
 
     //Assert
-    test <@ result = expectedActivityResult @>
+    result |> should equal expectedActivityResult
 
-[<Fact>]
+[<Test>]
 let ``06. Should fail when activity name is null, empty or whitespaces`` () =
     //Arrange
     let operationTime = DateTime.Now
@@ -166,15 +166,16 @@ let ``06. Should fail when activity name is null, empty or whitespaces`` () =
         [ ActivityCreationOrUpdateFailure [ ActivityNameCannotBeNullOrEmpty ]
           ActivityCreationOrUpdateFailure [ ActivityNameCannotBeNullOrEmpty ]
           ActivityCreationOrUpdateFailure [ ActivityNameCannotBeNullOrEmpty ] ]
+
     //Act
     let results =
         List.map (fun name -> createOrUpdateActivity operationTime Set.empty name "description!" [ "tag1"; "tag2"; "tag3" ])
         <| invalidNames
 
     //Assert
-    test <@ results = expectedResults @>
+    results |> should equal expectedResults
 
-[<Fact>]
+[<Test>]
 let ``07. Should fail when description is null or empty`` () =
     //Arrange
     let operationTime = DateTime.Now
@@ -191,9 +192,9 @@ let ``07. Should fail when description is null or empty`` () =
         <| invalidDescriptions
 
     //Assert
-    test <@ results = expectedResults @>
+    results |> should equal expectedResults
 
-[<Fact>]
+[<Test>]
 let ``08. Should fail when tags have null or empty values`` () =
     //Arrange
     let operationTime = DateTime.Now
@@ -210,9 +211,9 @@ let ``08. Should fail when tags have null or empty values`` () =
         <| invalidTags
 
     //Assert
-    test <@ results = expectedResults @>
+    results |> should equal expectedResults
 
-[<Fact>]
+[<Test>]
 let ``09. Should fail when duplicated tags are present`` () =
     //Arrange
     let operationTime = DateTime.Now
@@ -224,4 +225,4 @@ let ``09. Should fail when duplicated tags are present`` () =
         createOrUpdateActivity operationTime Set.empty "Whatever" "Description!" duplicatedTags
 
     //Assert
-    test <@ result = expectedResult @>
+    result |> should equal expectedResult

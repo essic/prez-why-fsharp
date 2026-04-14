@@ -1,6 +1,6 @@
 group Test
     FSharp.Core
-    Unquote
-    xunit
-    xunit.runner.visualstudio
+    NUnit
+    NUnit3TestAdapter
+    FsUnit
     Microsoft.NET.Test.Sdk
