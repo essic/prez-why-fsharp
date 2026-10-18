@@ -9,7 +9,6 @@
     <Compile Include="Domain.fs" />
     <Compile Include="Effects.fs" />
     <Compile Include="Shell.fs" />
-    <None Include="Step01-SaveActivities.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="paket.references" />
