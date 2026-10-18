@@ -3,14 +3,15 @@
 ## Project structure
 
 1. __api-definition__ folder contains the open-api spec file __clock-or-die.yaml__ which defines the api.
-1. __src__ file contains code related to the project
+1. __src__ folder contains the code related to the project
+1. __solutions__ folder contains the finished state of the exercise (one file per exercise file), and __verify.sh__ which proves it still makes everything green against the current tests. Do not copy these files into src/ yourself: use __verify.sh__ for live runs — it copies, tests, and restores.
 
-### Pre-requisite
+### Pre-requisites
 
 This project uses :
 - [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
 - _F# 10_, which is included in the SDK, however, you can check this [website](https://learn.microsoft.com/en-us/dotnet/fsharp/whats-new/fsharp-10) for more information.
-- We also use _C# 14_.
+- _C# 14_, also included in the SDK.
 - If you plan on modifying the API part of this workshop, you also need the __nswag__ command-line tool, installed separately — see the [For those who plan on modifying the API](#for-those-who-plan-on-modifying-the-api) section below.
 
 ### For those who wish to setup the workshop
@@ -25,7 +26,9 @@ To run the tests:
 dotnet test
 ```
 
-Tests use [NUnit](https://nunit.org/) as the test framework and [FsUnit](https://fsprojects.github.io/FsUnit/) for assertions. The [NUnit3TestAdapter](https://github.com/nunit/nunit3-vs-adapter) is the adapter that lets the VSTest runner, supplied by `Microsoft.NET.Test.Sdk`, discover and run them. (A `Microsoft.Testing.Platform` package is also pulled in transitively by the adapter, but it isn't in control here — the run is genuinely VSTest unless that support is explicitly enabled.)
+Tests use [NUnit](https://nunit.org/) as the test framework and [FsUnit](https://fsprojects.github.io/FsUnit/) for assertions. The [NUnit3TestAdapter](https://github.com/nunit/nunit3-vs-adapter) is the adapter that lets the VSTest runner, supplied by `Microsoft.NET.Test.Sdk`, discover and run them.
+
+__NOTE.__ As checked out, the tests __fail on purpose__ — implementing them is the exercise (see below). A green run here is a sign that the solution was already copied over `src/`: restore with `git checkout -- src/` (or re-clone).
 
 ### For those who plan on modifying the API
 
@@ -62,4 +65,15 @@ The project structure is as follow:
    - __Effects.fs__ infrastructure code needed to communicate with the outside world with other technical concerns.
    - __Shell.fs__ code that will be use by the outside world to realise our use cases. More on this during the workshop.
 3.__src/ClockOrDie.Core.Tests__ which host a test project, entirely in F#, using NUnit (with the NUnit3TestAdapter) & FsUnit (for assertions)
-   - __ActivityDomainTests.fs__ is a set of unit failing tests. The workshop consists of making those tests pass.
+   - __ActivityDomainTests.fs__ is a set of failing unit tests. The workshop consists of making those tests pass.
+
+### Solutions
+
+The finished state lives in __solutions/__ (one file per exercise file). During the session, run:
+
+```bash
+cd workshop/solutions
+./verify.sh
+```
+
+It copies the solution over `src/`, runs the full test suite, then restores `src/` to the exercise state — safe to run at any point, and the guarantee that the solution and the tests still agree. The finished files double as the facilitator's reference: to keep the completed code, copy them over and commit, as described in __solutions/README.md__.
