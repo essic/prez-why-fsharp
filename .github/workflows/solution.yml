@@ -1,0 +1,30 @@
+name: verify-solution
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  # Guarantees that workshop/solutions/ still makes every domain test green,
+  # and that the exercise state still builds (failing tests are expected there).
+  solution:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Check solution makes all tests green
+        working-directory: workshop
+        run: ./solutions/verify.sh
+
+      - name: Check exercise state still builds
+        working-directory: workshop
+        run: |
+          dotnet tool restore
+          dotnet paket install
+          dotnet build

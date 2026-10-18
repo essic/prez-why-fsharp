@@ -16,6 +16,6 @@ module Shell =
                 | ActivityCreationOrUpdateFailure e -> return (e |> Seq.map (sprintf "%A") |> BusinessErr |> Error)
                 | ActivityCreationSuccess newActivity ->return! db.CreateActivity newActivity 
                 | ActivityUpdateSuccess existingActivity -> return! db.UpdateActivity existingActivity 
-            | Error toto -> return ( "An error occured in database" |> Seq.singleton |> TechnicalErr |> Error)
+            | Error dbError -> return Error dbError
         }
 

@@ -1,2 +1,5 @@
 .DS_Store
 /**/~*
+.agents-work/
+.claude/settings.local.json
+.claude/.agents-installed.json

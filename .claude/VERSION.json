@@ -1,0 +1,18 @@
+{
+  "version": "2026.09.565504a-dirty",
+  "tag": "",
+  "commit": "565504a",
+  "dirty": true,
+  "target": "claude-code",
+  "install_dir": ".claude",
+  "roles": [
+    "architect",
+    "developer",
+    "leader",
+    "reviewer",
+    "tester"
+  ],
+  "skills": [
+    "commit-code"
+  ]
+}

@@ -38,7 +38,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Errors"
-  /timessheets/week/current:
+  /timesheets/week/current:
     get:
       summary: "Ask for the timesheet for the current week"
       operationId: getTrackingForCurrentWeek
@@ -73,7 +73,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Errors"
-  /timessheets/week/{week_number}/{week_year}:
+  /timesheets/week/{week_number}/{week_year}:
     get:
       summary: "Ask for the weekly timesheet for the given date."
       operationId: getTrackingForWeek
@@ -97,7 +97,7 @@ paths:
             description: The year of the week wished for
           example: 2022
       tags:
-        - timessheets
+        - timesheets
       responses:
         "200":
           description: "Weekly time sheets with activities status"
@@ -226,6 +226,8 @@ components:
           type: string
         activityId:
           type: integer
+          minimum: 1
+          format: int64
         timeTracked:
           type: number
           multipleOf: 0.25

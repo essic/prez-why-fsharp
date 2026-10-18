@@ -1,6 +1,7 @@
 ﻿using ClockOrDie.WebApi.Controllers.CodeGen;
 using Microsoft.AspNetCore.Mvc;
 using ClockOrDie.Core;
+using Microsoft.FSharp.Core;
 
 
 namespace ClockOrDie.WebApi.Controllers;
@@ -43,10 +44,17 @@ public class ClockOrDieController : ICodeGenClockOrDieController
             if (result.IsError)
                 return result.ErrorValue.ToActionResult();
 
-            return
-                result.ResultValue
-                    .Select(e => new Activity { ActivityId = e.IdActivity.Value, ActivityLabel = e.Name })
-                    .ToArray();
+            var activities = new List<Activity>();
+            foreach (var e in result.ResultValue)
+            {
+                if (FSharpOption<int>.get_IsNone(e.IdActivity))
+                    return Domain.ApplicationError.NewTechnicalErr(
+                        new[] { $"Activity '{e.Name}' has no id and cannot be returned." }).ToActionResult();
+
+                activities.Add(new Activity { ActivityId = e.IdActivity.Value, ActivityLabel = e.Name });
+            }
+
+            return activities.ToArray();
         }
         catch (Exception e)
         {
