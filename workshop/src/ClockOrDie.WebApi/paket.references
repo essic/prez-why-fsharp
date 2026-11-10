@@ -1,5 +1,7 @@
 FSharp.Core
 
 group WebApi
+Microsoft.AspNetCore.OpenApi
+Scalar.AspNetCore
 Swashbuckle.AspNetCore
 Newtonsoft.Json

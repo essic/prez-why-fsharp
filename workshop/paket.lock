@@ -139,11 +139,14 @@ GROUP WebApi
 RESTRICTION: || (== net10.0) (== netstandard2.1)
 NUGET
   remote: https://api.nuget.org/v3/index.json
+    Microsoft.AspNetCore.OpenApi (10.0.14)
+      Microsoft.OpenApi (>= 2.12.2 < 3.0) - restriction: || (== net10.0) (&& (== netstandard2.1) (>= net10.0))
     Microsoft.Bcl.AsyncInterfaces (10.0.12) - restriction: || (&& (== net10.0) (>= net462)) (&& (== net10.0) (< net8.0)) (== netstandard2.1)
     Microsoft.Extensions.ApiDescription.Server (10.0.12) - restriction: || (== net10.0) (&& (== netstandard2.1) (>= net10.0))
     Microsoft.OpenApi (2.12.2)
       System.Text.Json (>= 8.0.5) - restriction: || (&& (== net10.0) (< net8.0)) (== netstandard2.1)
     Newtonsoft.Json (13.0.4)
+    Scalar.AspNetCore (2.19)
     Swashbuckle.AspNetCore (10.2.3)
       Microsoft.Extensions.ApiDescription.Server (>= 10.0) - restriction: || (== net10.0) (&& (== netstandard2.1) (>= net10.0))
       Swashbuckle.AspNetCore.Swagger (>= 10.2.3) - restriction: || (== net10.0) (&& (== netstandard2.1) (>= net8.0))

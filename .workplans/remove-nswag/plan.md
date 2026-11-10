@@ -26,7 +26,7 @@ The executor may commit after each verified item on this branch.
 
 ## Items
 
-1. `01-add-openapi-scalar-packages.md` — [todo] Add Microsoft.AspNetCore.OpenApi and Scalar.AspNetCore to Paket
+1. `01-add-openapi-scalar-packages.md` — [done d719c1d] Add Microsoft.AspNetCore.OpenApi and Scalar.AspNetCore to Paket
 2. `02-add-dtos-and-http-mapping.md` — [todo] Add API DTO records and F# Result-to-HTTP mapping
 3. `03-write-minimal-api-endpoints.md` — [todo] Replace controllers with Minimal API endpoints
 4. `04-remove-nswag-artifacts-and-packages.md` — [todo] Delete NSwag/spec artifacts and unused packages
