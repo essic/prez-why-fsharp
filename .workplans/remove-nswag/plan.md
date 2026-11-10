@@ -31,10 +31,11 @@ The executor may commit after each verified item on this branch.
 3. `03-write-minimal-api-endpoints.md` — [superseded by 09] Replace controllers with Minimal API endpoints
 4. `04-remove-nswag-artifacts-and-packages.md` — [superseded by 09] Delete NSwag/spec artifacts and unused packages
 5. `09-switch-to-minimal-api-and-remove-nswag.md` — [done e76065c] Switch to Minimal API and remove NSwag atomically
-6. `05-smoke-test-openapi-scalar.md` — [todo] Smoke-test `/openapi/v1.json` and `/scalar`
-7. `06-update-documentation.md` — [todo] Update READMEs to describe generated OpenAPI + Scalar
-8. `07-run-reviewer.md` — [todo] Run the reviewer: stop and ask the user to start the reviewer agent
-9. `08-run-documentor.md` — [todo] Run the documentor: stop and ask the user to start the documentor agent
+6. `10-restore-endpoint-parity.md` — [todo] Restore GetActivities exception handling and route binding parity
+7. `05-smoke-test-openapi-scalar.md` — [todo] Smoke-test `/openapi/v1.json` and `/scalar`
+8. `06-update-documentation.md` — [todo] Update READMEs to describe generated OpenAPI + Scalar
+9. `07-run-reviewer.md` — [todo] Run the reviewer: stop and ask the user to start the reviewer agent
+10. `08-run-documentor.md` — [todo] Run the documentor: stop and ask the user to start the documentor agent
 
 ## Revision 1
 
@@ -48,4 +49,16 @@ Items 02, 03 and 04 are therefore superseded by
 and new `Program.cs`, deletes the NSwag artifacts, and cleans the Paket references in one
 verified change. Do not execute items 02, 03 or 04. Items 05–08 are unchanged and run after
 item 09.
+
+## Revision 2
+
+Review of item 09 found one should-fix: `GetActivities` lost the old controller's `try/catch`,
+so an exception from the database adapter would escape instead of returning a 500 `ApiError[]`.
+It also noted that the `:int` route constraints turn non-integer week values into 404 instead of
+the old 400. `10-restore-endpoint-parity.md` fixes both before the smoke test.
+
+Accepted nits, no action: the 501 stubs now have empty bodies (status codes unchanged);
+malformed JSON returns the framework's ProblemDetails 400 while business errors return
+`ApiError[]`; commit `e76065c`'s message says "items 02-04" and includes the item 01 review file.
+
 
