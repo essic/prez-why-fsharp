@@ -50,6 +50,9 @@ so the code and the documentation cannot drift. In development the document is s
 To change the API, edit the endpoints in `src/ClockOrDie.WebApi/Endpoints.cs` and the DTOs in
 `src/ClockOrDie.WebApi/Dtos.cs`; the documentation follows automatically.
 
+The reasoning behind this setup (and the removal of NSwag) is recorded in
+[`../docs/adr/`](../docs/adr/).
+
 ## Let's code in F# !
 
 In this workshop, we will code a very simple __Time Tracker__ API, in order to demonstrate F# in a more realistic/practical context.

@@ -30,6 +30,7 @@ workflow all live in [`workshop/README.md`](workshop/README.md).
 
 - [`workshop/README.md`](workshop/README.md) — setup, run, test, project structure and API documentation
 - [`workshop/solutions/README.md`](workshop/solutions/README.md) — reference solution workflow
+- [`docs/adr/`](docs/adr/) — architecture decision records (why the API uses generated OpenAPI + Scalar, Minimal API, Paket)
 
 ## Great follow up resources !
 
