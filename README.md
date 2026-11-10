@@ -21,15 +21,14 @@ The presentation material for a given year belongs in a `YYYY/` folder.
 
 **Clock or Die** is a small time-tracker that shows F# and C# in the same solution:
 business rules and failing unit tests in F#, HTTP and persistence in C#, with an OpenAPI
-contract as the boundary.
+document generated from the code.
 
 Prerequisites, setup, run and test commands, the API surface, and the reference-solution
 workflow all live in [`workshop/README.md`](workshop/README.md).
 
 ## Where to go next
 
-- [`workshop/README.md`](workshop/README.md) — setup, run, test, project structure and API generation
-- [`workshop/api-definition/README.md`](workshop/api-definition/README.md) — the OpenAPI contract
+- [`workshop/README.md`](workshop/README.md) — setup, run, test, project structure and API documentation
 - [`workshop/solutions/README.md`](workshop/solutions/README.md) — reference solution workflow
 
 ## Great follow up resources !

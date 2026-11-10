@@ -76,6 +76,6 @@ Steps:
    ```
    The contract is generated from the code by `Microsoft.AspNetCore.OpenApi`; browse it at `/scalar` or read it at `/openapi/v1.json`.
    ```
-Verify: cd workshop && ! grep -RniIE 'nswag|swashbuckle|api-definition|clock-or-die\.yaml|CodeGenClockOrDie|/swagger' --exclude-dir=.git --exclude-dir=bin --exclude-dir=obj --exclude-dir=paket-files . ../README.md && test ! -d api-definition
+Verify: cd workshop && ! grep -RniIE 'nswag|swashbuckle|api-definition|clock-or-die\.yaml|CodeGenClockOrDie|/swagger' --exclude-dir=.git --exclude-dir=bin --exclude-dir=obj --exclude-dir=paket-files --exclude-dir=packages . ../README.md && test ! -d api-definition
 Done when: the verify command exits 0 and `workshop/README.md` documents `/scalar` and `/openapi/v1.json`.
 If verify fails: write `.workplans/remove-nswag/problems/06-update-documentation.md` with the failing command and the remaining matches, set this item's `Status:` to `failed problems/06-update-documentation.md`, then stop.
