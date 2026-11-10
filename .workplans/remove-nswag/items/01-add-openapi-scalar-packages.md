@@ -1,4 +1,4 @@
-Status: done d719c1d
+Status: done 51e111f
 Goal: Make the .NET 10 built-in OpenAPI generator and the Scalar UI available to the WebApi project without removing anything yet.
 Files: `workshop/paket.dependencies`, `workshop/src/ClockOrDie.WebApi/paket.references`, `workshop/paket.lock`
 Steps:
