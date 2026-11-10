@@ -1,4 +1,4 @@
-Status: todo
+Status: done 22d7222
 Goal: Restore the old controller's exception handling on `GET /timesheets/activities` and the old 400 (not 404) behaviour for non-integer week route values.
 Files: `workshop/src/ClockOrDie.WebApi/Endpoints.cs`
 Steps:

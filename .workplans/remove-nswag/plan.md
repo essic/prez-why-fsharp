@@ -31,7 +31,7 @@ The executor may commit after each verified item on this branch.
 3. `03-write-minimal-api-endpoints.md` — [superseded by 09] Replace controllers with Minimal API endpoints
 4. `04-remove-nswag-artifacts-and-packages.md` — [superseded by 09] Delete NSwag/spec artifacts and unused packages
 5. `09-switch-to-minimal-api-and-remove-nswag.md` — [done e76065c] Switch to Minimal API and remove NSwag atomically
-6. `10-restore-endpoint-parity.md` — [todo] Restore GetActivities exception handling and route binding parity
+6. `10-restore-endpoint-parity.md` — [done 22d7222] Restore GetActivities exception handling and route binding parity
 7. `05-smoke-test-openapi-scalar.md` — [todo] Smoke-test `/openapi/v1.json` and `/scalar`
 8. `06-update-documentation.md` — [todo] Update READMEs to describe generated OpenAPI + Scalar
 9. `07-run-reviewer.md` — [todo] Run the reviewer: stop and ask the user to start the reviewer agent
