@@ -1,4 +1,4 @@
-Status: todo
+Status: superseded by 09 (work landed in e76065c)
 Goal: Delete every NSwag/spec-first artifact and the packages that are no longer used, and point the launch profile at Scalar.
 Files: `workshop/nswag.json`, `workshop/api-definition/`, `workshop/TODO/minimal-api-plan.md`, `workshop/src/ClockOrDie.WebApi/Controllers/`, `workshop/src/ClockOrDie.WebApi/Globals.cs`, `workshop/src/ClockOrDie.WebApi/AppErrorExt.cs`, `workshop/paket.dependencies`, `workshop/src/ClockOrDie.WebApi/paket.references`, `workshop/src/ClockOrDie.WebApi/Properties/launchSettings.json`
 Steps:

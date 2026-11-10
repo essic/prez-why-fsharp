@@ -1,4 +1,4 @@
-Status: todo
+Status: done e76065c
 Goal: Switch the WebApi project to Minimal API and remove NSwag in one atomic change, so the solution builds green at every commit boundary.
 Files: `workshop/src/ClockOrDie.WebApi/Dtos.cs`, `workshop/src/ClockOrDie.WebApi/ApiResults.cs`, `workshop/src/ClockOrDie.WebApi/Endpoints.cs`, `workshop/src/ClockOrDie.WebApi/Program.cs`, `workshop/src/ClockOrDie.WebApi/Controllers/` (delete), `workshop/src/ClockOrDie.WebApi/Globals.cs` (delete), `workshop/src/ClockOrDie.WebApi/AppErrorExt.cs` (delete), `workshop/nswag.json` (delete), `workshop/api-definition/` (delete), `workshop/TODO/minimal-api-plan.md` (delete), `workshop/paket.dependencies`, `workshop/src/ClockOrDie.WebApi/paket.references`, `workshop/src/ClockOrDie.WebApi/Properties/launchSettings.json`
 Steps:

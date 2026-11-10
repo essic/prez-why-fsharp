@@ -1,4 +1,4 @@
-Status: todo
+Status: superseded by 09 (work landed in e76065c)
 Goal: Replace the controller-based pipeline with Minimal API endpoints that keep the same routes and behaviour, and serve the built-in OpenAPI document plus Scalar UI.
 Files: `workshop/src/ClockOrDie.WebApi/Endpoints.cs`, `workshop/src/ClockOrDie.WebApi/Program.cs`
 Steps:

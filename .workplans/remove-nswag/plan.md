@@ -27,10 +27,10 @@ The executor may commit after each verified item on this branch.
 ## Items
 
 1. `01-add-openapi-scalar-packages.md` — [done 51e111f] Add Microsoft.AspNetCore.OpenApi and Scalar.AspNetCore to Paket
-2. `02-add-dtos-and-http-mapping.md` — [failed problems/02-add-dtos-and-http-mapping.md] Add API DTO records and F# Result-to-HTTP mapping
+2. `02-add-dtos-and-http-mapping.md` — [superseded by 09] Add API DTO records and F# Result-to-HTTP mapping
 3. `03-write-minimal-api-endpoints.md` — [superseded by 09] Replace controllers with Minimal API endpoints
 4. `04-remove-nswag-artifacts-and-packages.md` — [superseded by 09] Delete NSwag/spec artifacts and unused packages
-5. `09-switch-to-minimal-api-and-remove-nswag.md` — [todo] Switch to Minimal API and remove NSwag atomically
+5. `09-switch-to-minimal-api-and-remove-nswag.md` — [done e76065c] Switch to Minimal API and remove NSwag atomically
 6. `05-smoke-test-openapi-scalar.md` — [todo] Smoke-test `/openapi/v1.json` and `/scalar`
 7. `06-update-documentation.md` — [todo] Update READMEs to describe generated OpenAPI + Scalar
 8. `07-run-reviewer.md` — [todo] Run the reviewer: stop and ask the user to start the reviewer agent
