@@ -1,4 +1,4 @@
-Status: todo
+Status: failed problems/02-add-dtos-and-http-mapping.md
 Goal: Add the request/response records that describe the API, and a helper that turns F# `Result` values into HTTP responses.
 Files: `workshop/src/ClockOrDie.WebApi/Dtos.cs`, `workshop/src/ClockOrDie.WebApi/ApiResults.cs`
 Steps:
