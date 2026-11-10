@@ -24,7 +24,7 @@ public static class Endpoints
             .Produces<TimeSheet>(StatusCodes.Status200OK)
             .Produces<ApiError[]>(StatusCodes.Status500InternalServerError);
 
-        app.MapGet("/timesheets/week/{week_number:int}/{week_year:int}",
+        app.MapGet("/timesheets/week/{week_number}/{week_year}",
                 ([FromRoute(Name = "week_number")] int weekNumber,
                  [FromRoute(Name = "week_year")] int weekYear) =>
                     Results.StatusCode(StatusCodes.Status501NotImplemented))
@@ -52,22 +52,31 @@ public static class Endpoints
 
     private static async Task<IResult> GetActivities(Effects.IHandleDatabaseOperations db)
     {
-        var result = await db.GetAllActivities();
-        if (result.IsError)
-            return result.ErrorValue.ToHttpResult();
-
-        var activities = new List<Activity>();
-        foreach (var activity in result.ResultValue)
+        try
         {
-            if (FSharpOption<int>.get_IsNone(activity.IdActivity))
-                return Domain.ApplicationError.NewTechnicalErr(
-                        new[] { $"Activity '{activity.Name}' has no id and cannot be returned." })
-                    .ToHttpResult();
+            var result = await db.GetAllActivities();
+            if (result.IsError)
+                return result.ErrorValue.ToHttpResult();
 
-            activities.Add(new Activity(activity.IdActivity.Value, activity.Name));
+            var activities = new List<Activity>();
+            foreach (var activity in result.ResultValue)
+            {
+                if (FSharpOption<int>.get_IsNone(activity.IdActivity))
+                    return Domain.ApplicationError.NewTechnicalErr(
+                            new[] { $"Activity '{activity.Name}' has no id and cannot be returned." })
+                        .ToHttpResult();
+
+                activities.Add(new Activity(activity.IdActivity.Value, activity.Name));
+            }
+
+            return Results.Ok(activities.ToArray());
         }
-
-        return Results.Ok(activities.ToArray());
+        catch (Exception e)
+        {
+            return Results.Json(
+                new[] { new ApiError("Technical_Error", e.Message) },
+                statusCode: StatusCodes.Status500InternalServerError);
+        }
     }
 
     private static async Task<IResult> CreateActivity(
