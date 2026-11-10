@@ -47,3 +47,15 @@ item 04 removes the NSwag artifacts.
    slim item 04 down to package/reference cleanup only.
 
 Fix option chosen by the user: protocol stop; plan restructure pending.
+
+## Resolution
+
+Plan revision 1 adds `items/09-switch-to-minimal-api-and-remove-nswag.md`, which performs the
+work of items 02–04 atomically. Item 02 stays `failed` as a record; do not retry it. Items 03
+and 04 are marked superseded in `plan.md`.
+
+## Next action
+
+Read `plan.md` (including `## Revision 1`) and execute
+`items/09-switch-to-minimal-api-and-remove-nswag.md`. Do not retry items 02–04. After item 09,
+continue with items 05, 06, 07 and 08.

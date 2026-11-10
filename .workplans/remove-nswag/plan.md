@@ -28,9 +28,24 @@ The executor may commit after each verified item on this branch.
 
 1. `01-add-openapi-scalar-packages.md` — [done 51e111f] Add Microsoft.AspNetCore.OpenApi and Scalar.AspNetCore to Paket
 2. `02-add-dtos-and-http-mapping.md` — [failed problems/02-add-dtos-and-http-mapping.md] Add API DTO records and F# Result-to-HTTP mapping
-3. `03-write-minimal-api-endpoints.md` — [todo] Replace controllers with Minimal API endpoints
-4. `04-remove-nswag-artifacts-and-packages.md` — [todo] Delete NSwag/spec artifacts and unused packages
-5. `05-smoke-test-openapi-scalar.md` — [todo] Smoke-test `/openapi/v1.json` and `/scalar`
-6. `06-update-documentation.md` — [todo] Update READMEs to describe generated OpenAPI + Scalar
-7. `07-run-reviewer.md` — [todo] Run the reviewer: stop and ask the user to start the reviewer agent
-8. `08-run-documentor.md` — [todo] Run the documentor: stop and ask the user to start the documentor agent
+3. `03-write-minimal-api-endpoints.md` — [superseded by 09] Replace controllers with Minimal API endpoints
+4. `04-remove-nswag-artifacts-and-packages.md` — [superseded by 09] Delete NSwag/spec artifacts and unused packages
+5. `09-switch-to-minimal-api-and-remove-nswag.md` — [todo] Switch to Minimal API and remove NSwag atomically
+6. `05-smoke-test-openapi-scalar.md` — [todo] Smoke-test `/openapi/v1.json` and `/scalar`
+7. `06-update-documentation.md` — [todo] Update READMEs to describe generated OpenAPI + Scalar
+8. `07-run-reviewer.md` — [todo] Run the reviewer: stop and ask the user to start the reviewer agent
+9. `08-run-documentor.md` — [todo] Run the documentor: stop and ask the user to start the documentor agent
+
+## Revision 1
+
+Item 02 failed: adding the DTO records in `ClockOrDie.WebApi` shadowed the NSwag-generated
+`ClockOrDie.WebApi.Controllers.CodeGen` types, so the old controller stopped implementing its
+generated interface (CS0535/CS0738). Items 02–04 cannot each build green while the generated
+code still exists; the switch has to be atomic.
+
+Items 02, 03 and 04 are therefore superseded by
+`09-switch-to-minimal-api-and-remove-nswag.md`, which adds the DTOs, result mapping, endpoints
+and new `Program.cs`, deletes the NSwag artifacts, and cleans the Paket references in one
+verified change. Do not execute items 02, 03 or 04. Items 05–08 are unchanged and run after
+item 09.
+
