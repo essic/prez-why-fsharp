@@ -1,4 +1,4 @@
-Status: todo
+Status: done eaecf1c
 Goal: Remove every NSwag/spec-first instruction from the documentation and describe the generated OpenAPI document and Scalar UI instead.
 Files: `README.md`, `workshop/README.md`
 Steps:
