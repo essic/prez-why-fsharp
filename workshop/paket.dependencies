@@ -19,6 +19,3 @@ source https://api.nuget.org/v3/index.json
 framework: net10.0, netstandard2.1
 nuget Microsoft.AspNetCore.OpenApi ~> 10.0
 nuget Scalar.AspNetCore
-nuget Swashbuckle.AspNetCore
-nuget Microsoft.OpenApi ~> 2
-nuget Newtonsoft.Json
