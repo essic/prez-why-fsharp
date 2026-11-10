@@ -1,4 +1,4 @@
-Status: todo
+Status: done (smoke test passed; no code changes)
 Goal: Prove that the running app serves the generated OpenAPI document and the Scalar UI, and that the ported endpoints are routed.
 Files: none (read-only smoke test); log output goes to `/tmp/clockordie.log` and `/tmp/clockordie-openapi.json`
 Steps:
