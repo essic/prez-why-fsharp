@@ -1,4 +1,4 @@
-Status: todo
+Status: done (reviewer finished; findings in review/)
 Goal: Run the reviewer: stop and ask the user to start the reviewer agent.
 Files: `.workplans/remove-nswag/review/`
 Steps:

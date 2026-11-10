@@ -34,7 +34,7 @@ The executor may commit after each verified item on this branch.
 6. `10-restore-endpoint-parity.md` — [done 22d7222] Restore GetActivities exception handling and route binding parity
 7. `05-smoke-test-openapi-scalar.md` — [done] Smoke-test `/openapi/v1.json` and `/scalar`
 8. `06-update-documentation.md` — [done eaecf1c] Update READMEs to describe generated OpenAPI + Scalar
-9. `07-run-reviewer.md` — [todo] Run the reviewer: stop and ask the user to start the reviewer agent
+9. `07-run-reviewer.md` — [done] Run the reviewer: stop and ask the user to start the reviewer agent
 10. `08-run-documentor.md` — [todo] Run the documentor: stop and ask the user to start the documentor agent
 
 ## Revision 1
